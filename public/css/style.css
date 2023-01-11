@@ -11,6 +11,27 @@
   --navHeight: 80px;
   --footerHeight: 120px;
 }
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.17rem;
+}
+h4 {
+  font-size: 1rem;
+}
+h5 {
+  font-size: 0.83rem;
+}
+h6 {
+  font-size: 0.75rem;
+}
+p {
+  font-size: 1.05rem;
+}
 /* Navbar starting */
 .activePageMenu {
   color: var(--activeMenuColor) !important;
@@ -127,12 +148,13 @@ a {
   cursor: pointer;
   transition: 0.5s;
 }
-.subscribeBtn {
-  margin-top: 1.8rem;
-}
-.subscribeBtn:hover {
+.signUpBtn {
   background-color: white;
   color: var(--textColor);
+  margin-right: 10px;
+}
+.signUpBtn:hover {
+  opacity: 0.9;
 }
 /* Main Page Body Ending */
 /* Footer starting */
@@ -240,21 +262,21 @@ footer {
   font-size: 3rem;
   margin: 5rem 0 -2rem 3rem;
 }
-.noEventsMsg{
+.noEventsMsg {
   font-size: 1.5rem;
   margin: 3rem;
 }
-.eventBtn{
+.eventBtn {
   margin-top: 4rem;
   margin-left: 3rem;
   background-color: var(--textColor);
-  padding: 0.7rem ;
+  padding: 0.7rem;
   border-radius: 10px;
 }
-.eventBtn:hover{
+.eventBtn:hover {
   opacity: 0.8;
 }
-.eventBtn a{
+.eventBtn a {
   color: white;
   font-size: 1.2rem;
 }
@@ -343,43 +365,96 @@ footer {
   background: white !important;
   color: var(--textColor) !important;
 }
-.editBtn, .deleteBtn{
+.editBtn,
+.deleteBtn {
   background: black;
   border-radius: 5px;
   padding: 0.7rem 1rem;
   font-size: 1rem;
   border: none;
 }
-.deleteBtn{
+.deleteBtn {
   background: #d64d49;
   color: white;
 }
-.editBtn a{
+.editBtn a {
   color: white;
 }
-.deleteBtn:hover{
+.deleteBtn:hover {
   background: #c7211b;
 }
-.editBtn{
+.editBtn {
   padding: 0.7rem 1.5rem;
   background: #58b458;
   margin-left: 10px;
 }
-.editBtn:hover{
+.editBtn:hover {
   background: #008200;
 }
-.allEventsBtn{
+.allEventsBtn {
   padding: 0.7rem 1rem;
   font-size: 1rem;
   border-radius: 8px;
   margin: 0;
 }
-.fa-pencil-square-o{
+.fa-pencil-square-o {
   margin-right: 0.3rem;
 }
-.deleteAndEdit{
+.deleteAndEdit {
   display: flex;
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+.container {
+  width: 80%;
+  margin: 2rem auto;
+}
+.articleContainer {
+  margin-top: 2rem;
+  box-shadow: 0px 0px 10px #e1e0e0;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: justify;
+}
+.editTitle{
+  color: var(--textColor);
+}
+.articleContainer h1,
+.articleContainer h2,
+.articleContainer h3,
+.articleContainer h4,
+.articleContainer h5,
+.articleContainer h6 {
+  margin-top: 1.5rem;
+  color: var(--textColor);
+}
+.articleContainer p {
+  margin-top: 0.8rem;
+}
+.noticeForm input, .noticeForm textarea{
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid rgb(218, 218, 218);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.noticeForm textarea{
+  resize: none;
+}
+.inputContainer{
+  margin-top: 1.5rem;
+}
+.eventInputLabel{
+  color: var(--textColor);
+  font-size: 0.9rem;
+}
+.editSectionBtns{
+  margin-top: 2rem;
+}
+.editSectionBtns .editBtn{
+  margin-left: 0;
+  margin-right: 10px;
 }
