@@ -1,0 +1,4 @@
+node_modules/
+.env
+.prettierignore
+1-AuthPlan.txt

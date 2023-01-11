@@ -1,0 +1,385 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: sans-serif;
+}
+:root {
+  --textColor: #0e2442;
+  --activeMenuColor: #0095eb;
+  --navHeight: 80px;
+  --footerHeight: 120px;
+}
+/* Navbar starting */
+.activePageMenu {
+  color: var(--activeMenuColor) !important;
+}
+#navSection {
+  height: var(--navHeight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(245, 245, 245);
+}
+.mainLogo {
+  width: 60px;
+  height: 60px;
+  margin-right: 1rem;
+}
+.logoImg h3 {
+  line-height: 1.3;
+  font-size: 1.15rem;
+}
+nav,
+footer {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logoLink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-weight: 800;
+  color: var(--textColor);
+}
+a {
+  text-decoration: none;
+}
+.navMenu a {
+  padding: 0.4rem;
+  margin: 0 0.4rem;
+  color: var(--textColor);
+  font-size: 1.1rem;
+  transition: 0.5s;
+}
+.navMenu a:hover {
+  opacity: 0.7;
+}
+.menuIcon {
+  display: none;
+  overflow: hidden;
+}
+.line {
+  width: 25px;
+  height: 4px;
+  background: var(--textColor);
+  margin: 3px;
+  border-radius: 2px;
+  transition: 0.8s;
+}
+.rotateLines .line:nth-child(2) {
+  transform: translateX(50px);
+}
+.rotateLines .line:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+.rotateLines .line:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Navbar Ending */
+/* Main Page Body Starting */
+.landingArea {
+  position: relative;
+  background: url("../img/indexBackground.jpg") no-repeat center center/cover;
+  height: 600px;
+  color: white;
+}
+.landingArea::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+.landingContent {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  width: 50%;
+  z-index: 2;
+  letter-spacing: 1px;
+}
+.landingContent h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.landingContent p {
+  font-size: 1.1rem;
+}
+.btn {
+  color: white;
+  background-color: transparent;
+  padding: 0.9rem 3rem;
+  font-size: 1.3rem;
+  border: none;
+  outline: none;
+  border: 2px solid white;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.subscribeBtn {
+  margin-top: 1.8rem;
+}
+.subscribeBtn:hover {
+  background-color: white;
+  color: var(--textColor);
+}
+/* Main Page Body Ending */
+/* Footer starting */
+#footerSection {
+  display: flex;
+  justify-content: center;
+  background: rgb(230, 230, 230);
+}
+footer {
+  min-height: var(--footerHeight);
+}
+.socialMediaLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.socialMediaLink a {
+  font-size: 1.9rem;
+  margin: 0.7rem;
+}
+.fbLink {
+  font-size: 1.2rem !important;
+}
+.fa {
+  transition: 0.5s;
+}
+.fa-facebook {
+  color: #1873eb;
+  border: 2px solid #1873eb;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: inline-grid !important;
+  place-content: center;
+}
+.fa-facebook:hover {
+  color: white;
+  background-color: #1873eb;
+}
+.fa-instagram {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.fa-youtube-play {
+  color: red;
+}
+.fa-facebook:hover,
+.fa-instagram:hover,
+.fa-youtube-play:hover {
+  scale: 1.1;
+}
+.address,
+.phone,
+.gmail {
+  margin: 8px 0;
+}
+.footerInfo {
+  color: var(--textColor);
+}
+.footerInfo span {
+  font-size: 1rem;
+}
+.footerInfo .fa {
+  width: 30px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.fa-map-marker {
+  font-size: 1.3rem !important;
+}
+.fa-envelope {
+  font-size: 1.05rem !important;
+}
+/* Footer Ending */
+/* Events page css */
+.collegeEventDesc {
+  display: flex;
+  width: 80%;
+  margin: 3rem auto;
+}
+.eventTopImg {
+  background: url("../img/eventsImg.jpg") no-repeat center center/cover;
+  width: 500px;
+  min-width: 280px;
+  min-height: 300px;
+}
+.eventTopContent {
+  width: 700px;
+  padding: 0 0 0 4rem;
+  font-size: 1.3rem;
+  text-align: justify;
+}
+.eventHead {
+  color: var(--textColor);
+  font-size: 3rem;
+  margin: 5rem 0 -2rem 3rem;
+}
+.noEventsMsg{
+  font-size: 1.5rem;
+  margin: 3rem;
+}
+.eventBtn{
+  margin-top: 4rem;
+  margin-left: 3rem;
+  background-color: var(--textColor);
+  padding: 0.7rem ;
+  border-radius: 10px;
+}
+.eventBtn:hover{
+  opacity: 0.8;
+}
+.eventBtn a{
+  color: white;
+  font-size: 1.2rem;
+}
+.mainEvents {
+  width: 80%;
+  margin: auto;
+}
+.events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem;
+}
+.event {
+  width: 100%;
+  display: flex;
+  color: var(--textColor);
+  margin: 1.5rem 0;
+  box-shadow: 0 0 5px black;
+  border-radius: 5px;
+}
+.date {
+  width: 30%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  border-radius: 5px 0 0 5px;
+  background: #0e2442;
+  color: white;
+  transition: 0.5s;
+}
+.eventInfoContainer {
+  position: relative;
+  padding: 1rem;
+  padding-bottom: 80px;
+  width: 70%;
+  transition: 0.5s;
+  border-radius: 0 5px 5px 0;
+}
+.eventAbstract {
+  font-size: 1rem;
+  text-align: justify;
+}
+.event:hover .date {
+  color: var(--textColor);
+  background: white;
+}
+.event:hover .eventInfoContainer {
+  color: white;
+  background: var(--textColor);
+}
+.event:hover .readMoreBtn {
+  color: white;
+  background: transparent;
+  border: 1px solid white;
+}
+.eventAbstract {
+  margin-top: 0.5rem;
+  min-height: 70px;
+  font-size: 1rem;
+}
+.eventTitle {
+  font-size: 1.8rem;
+}
+.day {
+  font-size: 5rem;
+}
+.month {
+  font-size: 2rem;
+}
+.readMoreBtn {
+  position: absolute;
+  bottom: 20px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background: #dbdbdb;
+  text-align: center;
+  cursor: pointer;
+  padding: 0.7rem;
+  font-size: 1rem;
+  color: var(--textColor);
+}
+.readMoreBtn:hover {
+  transition: 0.5s;
+  background: white !important;
+  color: var(--textColor) !important;
+}
+.editBtn, .deleteBtn{
+  background: black;
+  border-radius: 5px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: none;
+}
+.deleteBtn{
+  background: #d64d49;
+  color: white;
+}
+.editBtn a{
+  color: white;
+}
+.deleteBtn:hover{
+  background: #c7211b;
+}
+.editBtn{
+  padding: 0.7rem 1.5rem;
+  background: #58b458;
+  margin-left: 10px;
+}
+.editBtn:hover{
+  background: #008200;
+}
+.allEventsBtn{
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  margin: 0;
+}
+.fa-pencil-square-o{
+  margin-right: 0.3rem;
+}
+.deleteAndEdit{
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}

@@ -1,0 +1,54 @@
+<head>
+  <script type="text/javascript" src="https://livejs.com/live.js"></script>
+</head>
+<%-include('../components/header')%>
+    <section class="collegeEventDesc">
+        <div class="eventTopImg"></div>
+        <div class="eventTopContent">
+          Hetauda City College frequently holds different events to make the students
+          participate in different extra curricular activities. Lorem ipsum dolor sit,
+          amet consectetur adipisicing elit. Similique atque explicabo aliquid
+          voluptas deserunt officiis, porro nobis qui rem, repellendus, sunt
+          distinctio placeat sit at numquam. Harum nostrum maiores quidem voluptatibus
+          libero.aliquid voluptas deserunt officiis, porro nobis qui rem, repellendus,
+          sunt distinctio placeat sit at numquam. Harum nostrum maiores quidem
+          voluptatibus libero.eat sit at numquam. Harum nostrum maiores quidem
+          voluptatibus libero.
+        </div>
+      </section>
+      <section class="mainEvents">
+        <h1 class="eventHead">Events</h1>
+        <button class="btn eventBtn"><a href="/notices/new">Add Event</a></button>
+        <%if(articles.length != 0){%>
+          <div class="events">
+                <%locals.articles.forEach((article)=>{%>
+                <div class="event">
+                  <div class="date">
+                
+                   <%let eventDay=article.eventDate.split(" ")%>
+                    <h1 class="day"><%=eventDay[0]%></h1>
+                    <h2 class="month"><%=eventDay[1]%></h2>
+                  </div>
+                  <div class="eventInfoContainer">
+                    <div class="evenInfo">
+                      <h1 class="eventTitle"><%=article.title%></h1>
+                      <p class="eventAbstract"><%=article.description%></p>
+                    </div>
+                    <a class="readMoreBtn" href=" <%="/notices/" + article.slug%>">Read more</a>
+                    <!-- Since anchor tag will be clicked while indexing, we use form for deletion -->
+                    <div class="deleteAndEdit">
+                    <form action="<%='/notices/'+article._id%>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn deleteBtn"><i class="fa fa-trash-o" aria-hidden="true"></i> <span class="delTxt">Delete</span></button>
+                    </form>
+                    <a href="<%="/notices/edit/"+article._id%>"><button class="btn editBtn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span class="editTxt">Edit</span></button></a>
+                    </div>
+                  </div>
+                </div>
+                <%})%>
+              </div>
+            <%}else{%>
+                <h1 class="noEventsMsg">No Events right now</h1>
+            <%}%>
+      </section>
+      
+<%-include('../components/footer')%>

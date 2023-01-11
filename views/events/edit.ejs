@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Article</title>
+  </head>
+  <body>
+    <h1>Edit your article</h1>
+    <form action="<%="/notices/edit/"+article._id+"?_method=PUT"%>" method="POST">
+      <div>
+        <label for="eventDate"> Event Date(Ex:12 June): </label>
+        <br>
+        <input type="text" name="eventDate" id="eventDate" required value="<%=article.eventDate%>"/>
+      </div>
+      <div>
+      <div>
+        <label for="title"> Title: </label>
+        <br>
+        <input type="text" name="title" id="title"  required value="<%=article.title%>"/>
+      </div>
+      <div>
+        <label for="description"> Description: </label>
+        <br>
+        <textarea type="text" name="description" id="description" required><%=article.description%></textarea>
+      </div>
+      <div>
+        <label for="markdown"> Markdown: </label>
+        <br>
+        <textarea type="text" name="markdown" id="markdown" ><%=article.markdown%></textarea>
+      </div>
+      <button type="submit" class="btn editBtn">Save</button>
+    </form>
+    <a href="/notices"><button class="btn deleteBtn">Cancel</button></a>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!-- //If the passed userTYpe is student this file should be radio buttons with student checked-->
+
+<%if(userType=='student'){%>
+<div>
+<label for="student">Student</label>
+<input type='radio' name="userType" checked id="student" value="student">
+<br/>
+<label for="teacher">Teacher</label>
+<input type='radio' name="userType" id="fullName" value="teacher">
+</div>
+<%} else{%>
+    <div>
+        <label for="student">Student</label>
+        <input type='radio' name="userType"  id="student" value="student">
+        <br/>
+        <label for="teacher">Teacher</label>
+        <input type='radio' name="userType" checked id="fullName" value="teacher">
+        </div>
+<%}%>

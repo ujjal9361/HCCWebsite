@@ -1,0 +1,12 @@
+<h1>This is signup form</h1>
+<p><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
+<form action="/signup" method="post">
+    <%-include('../components/userDetailFormFields',{fullName:locals.fullName,email:locals.email,phoneNumber:locals.phoneNumber})%>
+    <div class="form-row">
+        <label for="password">Password</label>
+        <br/>
+        <input type='password' required name="password" id="password" value="<%=locals.password?locals.password:""%>">
+    </div>
+    <button type="submit">SignUp</button>
+</form>
+<a href="/login">Login instead</a>
