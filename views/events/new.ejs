@@ -4,36 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../css/responsive.css">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <script defer src="/scripts/notices.js"></script>
     <title>New Article</title>
   </head>
   <body>
+    <div class="container noticeForm">
     <h1>Add a new notice</h1>
     <form action="/notices/new" method="POST">
-      <div>
-        <label for="eventDate"> Event Date(Ex:12 June): </label>
+      <div class="eventDate inputContainer">
+        <label for="eventInputDate" class="eventInputLabel"> Event Date(Ex:12 June): </label>
         <br>
         <input type="text" name="eventDate" id="eventDate" required/>
       </div>
-      <div>
-      <div>
-        <label for="title"> Title: </label>
+      <div class="eventInputTitle inputContainer">
+        <label for="title" class="eventInputLabel"> Title: </label>
         <br>
         <input type="text" name="title" id="title" required/>
       </div>
-      <div>
-        <label for="description"> Description: </label>
+      <div class="eventInputDesc inputContainer">
+        <label for="description" class="eventInputLabel"> Description: </label>
         <br>
         <textarea type="text" name="description" id="description" required></textarea>
       </div>
-      <div>
-        <label for="markdown"> Markdown: </label>
+      <div class="eventInputMarkdown inputContainer">
+        <label for="markdown" class="eventInputLabel"> Markdown: </label>
         <br>
         <textarea type="text" name="markdown" id="markdown" required></textarea>
       </div>
-      <button type="submit" class="btn editBtn">Save</button>
-    </form>
-    <a href="/notices" class="btn deleteBtn">Cancel</a>
+      <div class="editSectionBtns">
+        <button type="submit" class="btn editBtn">Save</button>
+        <a href="/notices"><button class="btn deleteBtn">Cancel</button></a>
+      </div>
+    </div>
   </body>
 </html>
