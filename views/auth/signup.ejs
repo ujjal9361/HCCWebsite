@@ -1,12 +1,35 @@
-<h1>This is signup form</h1>
-<p><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
-<form action="/signup" method="post">
-    <%-include('../components/userDetailFormFields',{fullName:locals.fullName,email:locals.email,phoneNumber:locals.phoneNumber})%>
-    <div class="form-row">
-        <label for="password">Password</label>
-        <br/>
-        <input type='password' required name="password" id="password" value="<%=locals.password?locals.password:""%>">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <script type="text/javascript" src="https://livejs.com/live.js"></script>
+</head>
+<body>
+  <div class="signUpContainer loginSignUpContainer">
+      <div class="leftSection">
+      <div class="content">
+        <h1 style="font-size: 2.5rem;">Already have an account?</h1>
+        <p>Login to access the information and resources</p>
+        <a href="/login" class="btn leftBtn">Login</a>
+      </div>
+  </div>
+  <div class="rightSection">
+      <form action="/signup" method="post" class="logSignUpForm">
+          <h1 style="margin: 1.5rem 0;">Sign Up</h1>
+        <p><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
+        <%-include('../components/userDetailFormFields',{fullName:locals.fullName,email:locals.email,phoneNumber:locals.phoneNumber})%>
+        <div class="form-row">
+          <input type='password' required name="password" id="password" placeholder="Enter your password" value="<%=locals.password?locals.password:""%>">
+        </div>
+        <button type="submit" class="btn mainFormBtn">SignUp</button>
+        <p class="loginInsteadLine"><span> Already have an account? </span><a href="/login" style="text-decoration: underline;">Login</a></p>
+      </form>
     </div>
-    <button type="submit">SignUp</button>
-</form>
-<a href="/login">Login instead</a>
+  </div>
+</body>
+</html>

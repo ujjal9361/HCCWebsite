@@ -1,6 +1,4 @@
-<head>
-  <script type="text/javascript" src="https://livejs.com/live.js"></script>
-</head>
+
 <%-include('../components/header')%>
     <section class="collegeEventDesc">
         <div class="eventTopImg"></div>
@@ -31,7 +29,7 @@
                     <!-- Since anchor tag will be clicked while indexing, we use form for deletion -->
                     <div class="deleteAndEdit">
                     <form action="<%='/notices/'+article._id%>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn deleteBtn"><i class="fa fa-trash-o" aria-hidden="true"></i> <span class="delTxt">Delete</span></button>
+                        <button type="button" class="btn deleteBtn" onclick="askToDelete(event)"><i class="fa fa-trash-o" aria-hidden="true"></i> <span class="delTxt">Delete</span></button>
                     </form>
                     <a href="<%="/notices/edit/"+article._id%>"><button class="btn editBtn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span class="editTxt">Edit</span></button></a>
                     </div>
@@ -43,5 +41,4 @@
                 <h1 class="noEventsMsg">No Events right now</h1>
             <%}%>
       </section>
-      
 <%-include('../components/footer')%>

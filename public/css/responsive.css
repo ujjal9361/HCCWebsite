@@ -1,3 +1,15 @@
+@media screen and (max-width: 1025px) {
+  .loginSignUpContainer .leftSection{
+    display: none;
+  }
+  .loginSignUpContainer .rightSection{
+    left: 50%;
+  }
+  .signUpInsteadLine, .loginInsteadLine{
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+}
 @media screen and (max-width: 767px) {
   .menuIcon {
     display: block;
@@ -112,6 +124,24 @@
   .events{
     margin: 2rem;
   }
+  .signInUpBtnContainer{
+    display: inline-flex;
+    flex-direction: column;
+
+  }
+  .signInUpBtnContainer>*
+  {
+    width: 160px;
+    margin-bottom: 1rem;
+  }
+  .logSignUpForm{
+    width: 320px;
+  }
+}
+@media screen and (max-width: 330px) {
+  .logSignUpForm{
+    width: 280px;
+  }
 }
 @media screen and (max-width: 300px) {
   * {
@@ -127,5 +157,8 @@
   .articleContainer{
     box-shadow: none;
     padding: 1rem;
+  }
+  .logSignUpForm{
+    width: 250px;
   }
 }

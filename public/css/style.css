@@ -10,6 +10,7 @@
   --activeMenuColor: #0095eb;
   --navHeight: 80px;
   --footerHeight: 120px;
+  --loginLeftSectionWidth: 450px;
 }
 h1 {
   font-size: 2rem;
@@ -137,7 +138,7 @@ a {
 }
 .btn {
   color: white;
-  background-color: transparent;
+  background-color: var(--textColor);
   padding: 0.9rem 3rem;
   font-size: 1.3rem;
   border: none;
@@ -148,7 +149,7 @@ a {
   cursor: pointer;
   transition: 0.5s;
 }
-.signUpBtn {
+.signUpBtn, .loginSignUpContainer .leftSection .leftBtn{
   background-color: white;
   color: var(--textColor);
   margin-right: 10px;
@@ -418,7 +419,7 @@ footer {
   border-radius: 10px;
   text-align: justify;
 }
-.editTitle{
+.editTitle {
   color: var(--textColor);
 }
 .articleContainer h1,
@@ -433,7 +434,8 @@ footer {
 .articleContainer p {
   margin-top: 0.8rem;
 }
-.noticeForm input, .noticeForm textarea{
+.noticeForm input,
+.noticeForm textarea {
   width: 100%;
   padding: 0.5rem;
   font-size: 1rem;
@@ -442,20 +444,131 @@ footer {
   border-radius: 5px;
   overflow: hidden;
 }
-.noticeForm textarea{
+.noticeForm textarea {
   resize: none;
 }
-.inputContainer{
+.inputContainer {
   margin-top: 1.5rem;
 }
-.eventInputLabel{
+.eventInputLabel {
   color: var(--textColor);
   font-size: 0.9rem;
 }
-.editSectionBtns{
+.editSectionBtns {
   margin-top: 2rem;
 }
-.editSectionBtns .editBtn{
+.editSectionBtns .editBtn {
   margin-left: 0;
   margin-right: 10px;
+}
+/* Login Section */
+.loginSignUpContainer{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* background-color: blue; */
+}
+.loginSignUpContainer .leftSection{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--textColor);
+  color: white;
+  width: var(--loginLeftSectionWidth);
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.loginSignUpContainer .leftSection .content{
+  width: 80%;
+  text-align: center;
+}
+.loginSignUpContainer .leftSection .content > *{
+  margin: 1.5rem 0;
+}
+.loginSignUpContainer .leftSection .content .btn{
+  padding: 0.7rem 3rem;
+  margin-top: 0rem;
+  display: inline-block;
+}
+.loginSignUpContainer .rightSection{
+  position: absolute;
+  top: 50%;
+  left: calc(var(--loginLeftSectionWidth) + (100vw - var(--loginLeftSectionWidth))/2);
+  transform: translate(-50%, -50%);
+}
+.logSignUpForm {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  padding: 1rem 1rem;
+  box-shadow: -3px -3px 15px rgba(0, 0, 0, 0.1), 3px 3px 15px rgba(0, 0, 0, 0.1);
+  min-height: 430px;
+  border-radius: 2%;
+}
+.logSignUpForm h1{
+  color: var(--textColor);
+  font-size: 2.5rem;
+  margin: 5rem 0 1rem;
+}
+.userLogo{
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  background-color: var(--textColor);
+  position: absolute;
+  transform: translateY(-50%);
+  display: grid;
+  place-content: center;
+}
+.fa-user{
+  font-size: 3rem !important;
+  color: white;
+}
+.logSignUpForm input {
+  width: 100%;
+  height: 3rem;
+  border: 1.2px rgba(187, 187, 187, 0.5) solid;
+  border-radius: 5px;
+  padding: 0.8rem;
+  padding-left: 2rem;
+  font-size: 0.9rem;
+  outline: none;
+  margin: 0.5rem 0;
+  color: var(--textColor);
+}
+.signUpContainer input{
+  padding-left: 0.8rem;
+}
+.logSignUpForm .mainFormBtn {
+  width: 150px;
+  font-size: 1.1rem;
+  padding: 0.7rem;
+  margin: 1.5rem 0;
+  border: none;
+}
+.logSignUpForm .mainFormBtn:hover, .loginSignUpContainer .leftSection .content .btn:hover{
+  opacity: 0.9;
+}
+.form-row{
+  position: relative;
+  width: 90%;
+}
+.inputLogo{
+ position: absolute; 
+ top: 50%;
+ transform: translateY(-50%);
+ left: 12px;
+ font-size: 1.2rem !important;
+ color: var(--textColor);
+ 
+}
+.fa-user-circle{
+  font-size: 1rem !important;
+  left: 10px;
+}
+.signUpInsteadLine, .loginInsteadLine{
+  display: none;
 }
