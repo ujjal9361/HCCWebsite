@@ -24,33 +24,52 @@ router.post("/signup", (req, res) => {
         ...req.body,
       });
     }
-    ValidUser.findOne(
-      { phoneNumber: req.body.phoneNumber },
-      async (err, validUser) => {
-        if (err) {
-          console.log(err);
-        } else {
-          if (!validUser) {
-            res.render("auth/signup", {
-              flashMessage: "User credentials not in database",
-              ...req.body,
-            });
-          } else {
-            if (req.body.password.length < 8) {
-              res.render("auth/signup", {
-                flashMessage: "Password should be at least 8 characters",
-                ...req.body,
-              });
+    ValidUser.findOne({ fullName: req.body.fullName }, (err, validUser) => {
+      if (err) {
+        return console.log(err);
+      }
+      if (!validUser) {
+        return res.render("auth/signup", {
+          flashMessage: "User credentials not in database",
+          ...req.body,
+        });
+      } else {
+        ValidUser.findOne(
+          { phoneNumber: req.body.phoneNumber },
+          async (err, validUser) => {
+            if (err) {
+              console.log(err);
             } else {
-              //savePassword
-              validUser.password = await bcrypt.hash(req.body.password, 10);
-              await validUser.save();
-              res.redirect("/login");
+              if (!validUser) {
+                res.render("auth/signup", {
+                  flashMessage: "User credentials not in database",
+                  ...req.body,
+                });
+              } else {
+                if (req.body.password.length < 8) {
+                  res.render("auth/signup", {
+                    flashMessage: "Password should be at least 8 characters",
+                    ...req.body,
+                  });
+                } else {
+                  //savePassword
+                  if (validUser.password) {
+                    return res.render("auth/signup", {
+                      flashMessage:
+                        "User with these credentials already signed up..Login Instead",
+                      ...req.body,
+                    });
+                  }
+                  validUser.password = await bcrypt.hash(req.body.password, 10);
+                  await validUser.save();
+                  res.redirect("/login");
+                }
+              }
             }
           }
-        }
+        );
       }
-    );
+    });
   });
 });
 
