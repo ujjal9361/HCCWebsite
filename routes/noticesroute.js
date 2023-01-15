@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Article = require("../models/article");
+const { isTeacherOrAdmin } = require("../authMiddlwares");
 
 //To get the notices page
 router.get("/", (req, res) => {
@@ -9,17 +10,17 @@ router.get("/", (req, res) => {
       console.log("Error with getting the articles Array");
       console.log(err);
     } else {
-      res.status(200);
       res.render("events/events", {
         articles: articleArray,
         RenderingURL: req.originalUrl,
+        req: req,
       });
     }
   });
 });
 
 //To get the form to create a new article or notice
-router.get("/new", (req, res) => {
+router.get("/new", isTeacherOrAdmin, (req, res) => {
   res.render("events/new", { RenderingURL: req.originalUrl });
 });
 
@@ -45,13 +46,14 @@ router.get("/:slug", (req, res) => {
       res.render("events/notice", {
         article: article,
         RenderingURL: req.originalUrl,
+        req: req,
       });
     }
   });
 });
 
 //when an user click delete button for a single article
-router.delete("/:id", (req, res) => {
+router.delete("/:id", isTeacherOrAdmin, (req, res) => {
   Article.findOneAndDelete({ _id: req.params.id }, (err) => {
     if (err) {
       console.log("Error in route for deleting an article");
@@ -63,7 +65,7 @@ router.delete("/:id", (req, res) => {
 });
 
 //When an user clicks edit button for an article,(The editing interface)
-router.get("/edit/:id", (req, res) => {
+router.get("/edit/:id", isTeacherOrAdmin, (req, res) => {
   Article.findOne({ _id: req.params.id }, (err, article) => {
     if (err) {
       console.log("Error in route for editing an article");

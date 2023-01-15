@@ -99,7 +99,7 @@ router.post("/login", (req, res) => {
             ...req.body,
           });
         } else {
-          console.log("A session needs to be created");
+          req.session.isAuthenticated = validUser.userType;
           res.redirect("/");
         }
       }

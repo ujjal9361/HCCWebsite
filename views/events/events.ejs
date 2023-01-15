@@ -9,9 +9,11 @@
       </section>
       <section class="mainEvents">
         <h1 class="eventHead">Events</h1>
-        <form action="/notices/new?_method=GET" method="post">
-        <button class="btn eventBtn" type="submit">Add Event</button>
-      </form>
+        <%if(locals.req.session.isAuthenticated=="teacher" || locals.req.session.isAuthenticated=="admin"){%>
+          <form action="/notices/new?_method=GET" method="post">
+          <button class="btn eventBtn" type="submit">Add Event</button>
+        </form>
+        <%}%>
         <%if(articles.length != 0){%>
           <div class="events">
                 <%locals.articles.forEach((article)=>{%>
@@ -29,12 +31,16 @@
                     </div>
                     <a class="readMoreBtn" href=" <%="/notices/" + article.slug%>">Read more</a>
                     <!-- Since anchor tag will be clicked while indexing, we use form for deletion -->
-                    <div class="deleteAndEdit">
-                    <form action="<%='/notices/'+article._id%>?_method=DELETE" method="POST">
-                        <button type="button" class="btn deleteBtn" onclick="askToDelete(event)"><i class="fa fa-trash-o" aria-hidden="true"></i> <span class="delTxt">Delete</span></button>
-                    </form>
-                    <a href="<%="/notices/edit/"+article._id%>"><button class="btn editBtn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span class="editTxt">Edit</span></button></a>
-                    </div>
+
+                    <!-- We will make these buttons accessible to only the teachers that match the createdBy Id in the article -->
+                    <%if(locals.req.session.isAuthenticated=="teacher" || locals.req.session.isAuthenticated=="admin"){%>
+                      <div class="deleteAndEdit">
+                        <form action="<%='/notices/'+article._id%>?_method=DELETE" method="POST">
+                            <button type="button" class="btn deleteBtn" onclick="askToDelete(event)"><i class="fa fa-trash-o" aria-hidden="true"></i> <span class="delTxt">Delete</span></button>
+                        </form>
+                        <a href="<%="/notices/edit/"+article._id%>"><button class="btn editBtn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span class="editTxt">Edit</span></button></a>
+                        </div>
+                    <%}%>                   
                   </div>
                 </div>
                 <%})%>
