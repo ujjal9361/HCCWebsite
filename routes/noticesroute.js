@@ -3,11 +3,13 @@ const Article = require("../models/article");
 
 //To get the notices page
 router.get("/", (req, res) => {
+  console.log("Accessed the events page");
   Article.find({}, (err, articleArray) => {
     if (err) {
       console.log("Error with getting the articles Array");
       console.log(err);
     } else {
+      res.status(200);
       res.render("events/events", {
         articles: articleArray,
         RenderingURL: req.originalUrl,
@@ -38,7 +40,7 @@ router.get("/:slug", (req, res) => {
   Article.findOne({ slug: req.params.slug }, (err, article) => {
     if (err) {
       console.log("Error in the router for individual article");
-      console.log(error);
+      console.log(err);
     } else {
       res.render("events/notice", {
         article: article,

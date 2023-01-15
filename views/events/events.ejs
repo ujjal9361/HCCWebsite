@@ -9,7 +9,9 @@
       </section>
       <section class="mainEvents">
         <h1 class="eventHead">Events</h1>
-        <button class="btn eventBtn"><a href="/notices/new">Add Event</a></button>
+        <form action="/notices/new?_method=GET" method="post">
+        <button class="btn eventBtn" type="submit">Add Event</button>
+      </form>
         <%if(articles.length != 0){%>
           <div class="events">
                 <%locals.articles.forEach((article)=>{%>

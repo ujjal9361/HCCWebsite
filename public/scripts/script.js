@@ -14,9 +14,10 @@ function controlSmallNav() {
     }
   });
 }
-function askToDelete(e){
-  let result = confirm("This will permanently delete all the data of the event. We cannot recover them once you delete it. \nAre you sure you want to permanently delete this event?");
-  if(result)
-    e.target.parentNode.submit();
+function askToDelete(e) {
+  let result = confirm(
+    "This will permanently delete all the data of the event. We cannot recover them once you delete it. \nAre you sure you want to permanently delete this event?"
+  );
+  if (result) e.target.parentNode.submit();
 }
 controlSmallNav();
