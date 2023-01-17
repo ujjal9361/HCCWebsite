@@ -100,6 +100,7 @@ router.post("/login", (req, res) => {
           });
         } else {
           req.session.isAuthenticated = validUser.userType;
+          req.session.userId = validUser._id;
           res.redirect("/");
         }
       }

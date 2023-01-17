@@ -6,6 +6,9 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
+//Requiring middlware defined in another file
+const { deSerializeUser } = require("./authMiddlwares");
+
 //Configuring mongoose
 mongoose.set("strictQuery", "false");
 mongoose.connect(process.env.MONGO_URI, () => {
@@ -40,6 +43,8 @@ app.use(
   })
 );
 
+//Deserializing Users
+app.use(deSerializeUser);
 //Importing routers
 const rootRouter = require("./routes/root.js");
 const noticesRouter = require("./routes/noticesroute");
