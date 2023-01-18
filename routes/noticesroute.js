@@ -4,7 +4,6 @@ const { isTeacherOrAdmin } = require("../authMiddlwares");
 
 //To get the notices page
 router.get("/", (req, res) => {
-  console.log("Accessed the events page");
   Article.find({}, (err, articleArray) => {
     if (err) {
       console.log("Error with getting the articles Array");
@@ -31,6 +30,7 @@ router.post("/new", async (req, res) => {
     description: req.body.description,
     markdown: req.body.markdown,
     eventDate: req.body.eventDate,
+    publisherId: req.user._id,
   });
   let article = await newArticle.save();
   res.redirect(`/notices/${article.slug}`);

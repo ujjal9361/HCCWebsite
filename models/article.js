@@ -36,6 +36,10 @@ const articleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  publisherId:{
+    type:String,
+    required:true
+  }
 });
 //Before any CRUD operation(validation),
 //For example in case of saving of a new Article, the function runs before the Article is saved

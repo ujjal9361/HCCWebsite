@@ -32,14 +32,19 @@
                     <!-- Since anchor tag will be clicked while indexing, we use form for deletion -->
 
                     <!-- We will make these buttons accessible to only the teachers that match the createdBy Id in the article -->
-                    <%if(locals.req.session.isAuthenticated=="teacher" || locals.req.session.isAuthenticated=="admin"){%>
+                    <%if(typeof locals.req.user != 'undefined'){%>
+                    <%if(locals.req.user._id==article.publisherId || locals.req.session.isAuthenticated=="admin"){%>
                       <div class="deleteAndEdit">
                         <form action="<%='/notices/'+article._id%>?_method=DELETE" method="POST">
                             <button type="button" class="btn deleteBtn" onclick="askToDeleteEvent(this.parentNode)"><i class="fa fa-trash-o" aria-hidden="true"></i> <span class="delTxt">Delete</span></button>
                         </form>
+                        <%if(locals.req.user._id==article.publisherId){%>
                         <a href="<%="/notices/edit/"+article._id%>"><button class="btn editBtn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span class="editTxt">Edit</span></button></a>
+                        <%}%>
+                       
                         </div>
                     <%}%>                   
+                    <%}%>
                   </div>
                 </div>
                 <%})%>
