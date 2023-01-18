@@ -337,7 +337,7 @@ footer {
   min-height: 70px;
   font-size: 1rem;
 }
-.coursesHead{
+.coursesHead, .teachersHead{
   color: var(--textColor);
   font-size: 2.5rem;
   padding-left: 1rem;
@@ -614,4 +614,46 @@ footer {
 }
 .signUpInsteadLine, .loginInsteadLine{
   display: none;
+}
+
+/* Teacher Information Page */
+.teacherSection{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.teachersHead{
+  text-align: center;
+  margin-top: 2rem;
+  flex-basis: 100%;
+}
+.teacherCard{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 400px;
+  padding: 1rem;
+}
+.teacherImg img{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.teacherDetails{
+  text-align: center;
+}
+.teacherDetails>*{
+  margin-top: 0.5rem;
+}
+.teacherDetails .post{
+  font-size: 1.2rem;
+}
+.teacherDetails .name{
+  font-size: 1.5rem;
+}
+.noteBtn{
+  display: inline-block;
+  font-size: 1.1rem;
+  padding: 0.6rem 3rem;
 }
