@@ -1,4 +1,3 @@
-
 <%-include('../components/header')%>
     <section class="collegeEventDesc">
         <div class="eventTopImg"></div>
@@ -36,7 +35,7 @@
                     <%if(locals.req.session.isAuthenticated=="teacher" || locals.req.session.isAuthenticated=="admin"){%>
                       <div class="deleteAndEdit">
                         <form action="<%='/notices/'+article._id%>?_method=DELETE" method="POST">
-                            <button type="button" class="btn deleteBtn" onclick="askToDelete(event)"><i class="fa fa-trash-o" aria-hidden="true"></i> <span class="delTxt">Delete</span></button>
+                            <button type="button" class="btn deleteBtn" onclick="askToDeleteEvent(this.parentNode)"><i class="fa fa-trash-o" aria-hidden="true"></i> <span class="delTxt">Delete</span></button>
                         </form>
                         <a href="<%="/notices/edit/"+article._id%>"><button class="btn editBtn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span class="editTxt">Edit</span></button></a>
                         </div>

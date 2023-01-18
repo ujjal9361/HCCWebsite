@@ -1,50 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hetauda City College</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/responsive.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <script src="/scripts/script.js" ></script>
-  </head>
-  <body>
-    <!-- Use this header i.e navSection as a partial -->
-    <section id="navSection">
-      <nav>
-        <div class="logoImg">
-          <a href="" class="logoLink">
-            <img
-              src="img/collegeLogo.png"
-              alt="Logo not loaded"
-              class="mainLogo"
-            />
-            <h3>
-              Hetauda City<br />
-              College
-            </h3>
-          </a>
-        </div>
-        <div class="navMenu">
-        
-          <a href="/" class="<%=RenderingURL=="/"?"activePageMenu":null%>">Home</a>
-          <a href="/courses" class="<%=RenderingURL.startsWith("/courses")?"activePageMenu":null%>">Courses</a>
-          <a href="/teachers" class="<%=RenderingURL.startsWith("/teachers")?"activePageMenu":null%>">Teachers</a>
-          <a href="/notices" class="<%=RenderingURL.startsWith("/notices")?"activePageMenu":null%>">Notices</a>
-        </div>
-        <div class="menuIcon">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-      </nav>
-    </section>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hetauda City College</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="/scripts/script.js" defer></script>
+</head>
+
+<body>
+  <!-- Use this header i.e navSection as a partial -->
+  <section id="navSection">
+    <nav>
+      <div class="logoImg">
+        <a href="" class="logoLink">
+          <img src="img/collegeLogo.png" alt="Logo not loaded" class="mainLogo" />
+          <h3>
+            Hetauda City<br />
+            College
+          </h3>
+        </a>
+      </div>
+      <div class="navMenu">
+
+        <a href="/" class="<%=RenderingURL=="/"?"activePageMenu":null%>">Home</a>
+        <a href="/courses" class="<%=RenderingURL.startsWith("/courses")?"activePageMenu":null%>">Courses</a>
+        <a href="/teachers" class="<%=RenderingURL.startsWith("/teachers")?"activePageMenu":null%>">Teachers</a>
+        <a href="/notices" class="<%=RenderingURL.startsWith("/notices")?"activePageMenu":null%>">Notices</a>
+      </div>
+      <div class="menuIcon">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </nav>
+  </section>

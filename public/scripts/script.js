@@ -14,10 +14,11 @@ function controlSmallNav() {
     }
   });
 }
-function askToDelete(e) {
+function askToDeleteEvent(eventForm) {
   let result = confirm(
     "This will permanently delete all the data of the event. We cannot recover them once you delete it. \nAre you sure you want to permanently delete this event?"
   );
-  if (result) e.target.parentNode.submit();
+  if(result)
+    eventForm.submit();
 }
 controlSmallNav();

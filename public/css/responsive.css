@@ -1,4 +1,14 @@
 @media screen and (max-width: 1025px) {
+  .courses{
+    width:90%;
+  }
+  .course{
+    border: 2px solid;
+    padding: 1rem;
+  }
+  .courseTitle{
+    margin-bottom: 1rem;
+  }
   .loginSignUpContainer .leftSection{
     display: none;
   }
@@ -47,8 +57,17 @@
     width: 100%;
     margin-bottom: 2rem;
   }
-  .event {
+  .event, .course{
     flex-direction: column;
+  }
+  .courseImg{
+    height: 300px;
+    width: 100%;
+  }
+  .courseInfoContainer{
+    width: 100%;
+    margin-top: 1rem;
+    padding-left: 1rem;
   }
   .date {
     width: 100%;
@@ -124,6 +143,13 @@
   .events{
     margin: 2rem;
   }
+  .courseImg{
+    display: none;
+  }
+  .courseInfoContainer{
+    width: 100%;
+    margin-top: 0;
+  }
   .signInUpBtnContainer{
     display: inline-flex;
     flex-direction: column;
@@ -141,6 +167,9 @@
 @media screen and (max-width: 330px) {
   .logSignUpForm{
     width: 280px;
+  }
+  .courseTitle{
+    font-size: 1.6rem;
   }
 }
 @media screen and (max-width: 300px) {
