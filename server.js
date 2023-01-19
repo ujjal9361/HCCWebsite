@@ -60,7 +60,7 @@ app.use("/teachers", teachersRouter);
 app.use("/admin", adminRouter);
 
 //Listening at a port
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server listening at port ${port}.`);
 });

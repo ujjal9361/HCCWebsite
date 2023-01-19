@@ -163,6 +163,23 @@
   .logSignUpForm{
     width: 320px;
   }
+  .teacherImg img{
+    border-radius: 10px 10px 0 0;
+  }
+  .teacherCard{
+  flex-direction: column;
+  min-width: auto;
+  }
+  .teacherDetails{
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+  .teachersHead{
+    font-size: 2rem;
+  }
+  .principalDetail{
+    margin-top: 8rem;
+  }
 }
 @media screen and (max-width: 330px) {
   .logSignUpForm{
