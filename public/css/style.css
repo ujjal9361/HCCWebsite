@@ -236,11 +236,15 @@ footer {
   display: inline-grid !important;
   place-content: center;
 }
+footer .fa-facebook{
+  font-size: 18px !important;
+}
 .fa-facebook:hover {
   color: white;
   background-color: #1873eb;
 }
 .fa-instagram {
+  font-size: 30px !important;
   background: radial-gradient(
     circle at 30% 107%,
     #fdf497 0%,
@@ -255,6 +259,7 @@ footer {
 }
 .fa-youtube-play {
   color: red;
+  font-size: 30px !important;
 }
 .fa-facebook:hover,
 .fa-instagram:hover,
@@ -651,6 +656,9 @@ footer {
 }
 
 /* Teacher Information Page */
+.teacherSectionMain{
+  margin-bottom: 4rem;
+}
 .teacherSection{
   display: flex;
   flex-wrap: wrap;
