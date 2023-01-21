@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+:root {
+  --textColor: #0e2442;
+}
+/* Navbar section */
+.navContent {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--textColor);
+  color: white;
+  padding: 0.5rem 0;
+}
+.navContent .left {
+  margin-left: 2rem;
+}
+.navContent .right {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+.navContent #adminName {
+  margin-right: 10px;
+}
+.profileImg img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+/* user count section */
+.userCountSection {
+  margin: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.card {
+  background-image: linear-gradient(
+    to right top,
+    #001c44,
+    #002356,
+    #002b68,
+    #00327b,
+    #00398e
+  );
+  padding: 1rem;
+  border-radius: 5px;
+  width: 270px;
+  height: 200px;
+  color: white;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+.userCount {
+  font-size: 4rem;
+}
+.userType {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+/* User List Table Section */
+.usersBtn {
+  display: inline-flex;
+  border: 1px solid rgb(243, 243, 243);
+  border-radius: 5px;
+}
+.usersBtn a {
+  text-decoration: none;
+  color: black;
+  padding: 0.8rem 1.5rem;
+  margin: 0;
+  opacity: 0.9;
+  background-color: rgb(230, 230, 230);
+}
+.teacherListBtn {
+  border-left: 1px solid rgb(204, 204, 204);
+  border-right: 1px solid rgb(204, 204, 204);
+}
+.userList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userList .lists {
+  margin-top: 5rem;
+}
+.tableTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--textColor);
+  margin-top: 1rem;
+}
+.tableTop .left{
+    font-size: 1.2rem;
+    margin-left: 0.3rem;
+}
+.tableTop .right input {
+  font-size: 0.9rem;
+  outline: none;
+  border: 2px solid var(--textColor);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+.tableTop .right input::placeholder {
+  color: var(--textColor);
+}
+.addBtn {
+  text-decoration: none;
+  color: white;
+  background-color: var(--textColor);
+  padding: 0.5rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.tableContainer {
+  overflow-x: auto;
+}
+.activeUserList {
+  background: white !important;
+}
+.userListTable {
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.userListTable tr:nth-of-type(even) {
+  background-color: rgb(245, 245, 245);
+}
+.userListTable thead tr {
+  background-color: var(--textColor);
+  text-align: left;
+  color: white;
+}
+.userListTable tr th{
+    font-weight: 500;
+}
+.userListTable tr th,
+.userListTable tr td {
+  padding: 0.5rem 1.5rem;
+  white-space: nowrap;
+}
+.userListTable tbody tr td:nth-child(1){
+    text-align: center;
+}
+.userListTable .fa-trash-o, .userListTable .fa-pencil-square-o{
+    margin: auto;
+}
+.userListTable tbody tr {
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+.userListTable tbody tr:last-of-type {
+  border-bottom: 3px solid var(--textColor);
+}
+.fa {
+  border-radius: 5px;
+  font-size: 1rem !important;
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid !important;
+  place-content: center;
+}
+.fa:hover {
+  cursor: pointer;
+}
+.fa-trash-o {
+  background: #c7211b;
+}
+.fa-pencil-square-o {
+  background: #008200;
+}
