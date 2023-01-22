@@ -2,18 +2,15 @@
 
 <%if(userType=='student'){%>
 <div>
-<label for="student">Student</label>
-<input type='radio' name="userType" checked id="student" value="student">
-<br/>
-<label for="teacher">Teacher</label>
-<input type='radio' name="userType" id="fullName" value="teacher">
+  <label for="student">Student</label>
+  <input type='radio' name="userType" checked id="student" value="student">
+  <br />
+  <label for="teacher">Teacher</label>
+  <input type='radio' name="userType" id="fullName" value="teacher">
 </div>
 <%} else{%>
-    <div>
-        <label for="student">Student</label>
-        <input type='radio' name="userType"  id="student" value="student">
-        <br/>
-        <label for="teacher">Teacher</label>
-        <input type='radio' name="userType" checked id="fullName" value="teacher">
-        </div>
+<div>
+  <input type='radio' name="userType" id="student" value="student">
+  <input type='radio' name="userType" checked id="fullName" value="teacher">
+</div>
 <%}%>

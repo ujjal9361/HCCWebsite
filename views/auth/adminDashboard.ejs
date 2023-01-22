@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/adminDashboard.css">
   <link rel="stylesheet" href="/css/responsiveAdmin.css">
+  <script defer src="/scripts/admin.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Admin Dashboard</title>
 </head>
@@ -25,114 +26,130 @@
   </nav>
   <section class="userCountSection">
     <div class="card studentCard">
-        <div class="userCount">288</div>
-        <div class="userType">Students</div>
+      <div class="userCount">288</div>
+      <div class="userType">Students</div>
     </div>
     <div class="card teacherCard">
-        <div class="userCount">22</div>
-        <div class="userType">Teachers</div>
+      <div class="userCount">22</div>
+      <div class="userType">Teachers</div>
     </div>
     <div class="card adminCard">
-        <div class="userCount">01</div>
-        <div class="userType">Admin</div>
+      <div class="userCount">01</div>
+      <div class="userType">Admin</div>
     </div>
+  </section>
+  <section class="addUserPopUp">
+    <dialog class="addUserModal">
+      <h1 class="title">Add a Student</h1>
+      <p><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
+      <form action="/admin/users/new" method="post">
+        <%-include('../components/userDetailFormFields',{fullName:locals.fullName,email:locals.email,phoneNumber:locals.phoneNumber})%>
+        <input type='radio' name="userType" id="studentRadio" value="student">
+        <input type='radio' name="userType" id="teacherRadio" value="teacher">
+        <div class="btns">
+          <button type="button" class="cancelBtn btn">Cancel</button>
+          <button type="submit" class="btn">Add</button>
+        </div>
+      </form>
+    </dialog>
   </section>
   <section class="userList">
-      <div class="lists">
-        <div class="usersBtn">
-            <a href="" class="studentListBtn activeUserList">Student</a>
-            <a href="" class="teacherListBtn">Teacher</a>
-            <a href="" class="adminListBtn">Admin</a>
+    <div class="lists">
+      <div class="usersBtn">
+        <a href="" class="studentListBtn activeUserList">Student</a>
+        <a href="" class="teacherListBtn">Teacher</a>
+        <a href="" class="adminListBtn">Admin</a>
+      </div>
+      <div class="tableTop">
+        <span class="left">Students List</span>
+        <div class="right">
+          <input type="text" placeholder="Search Student by Name">
+          <a class="btn addBtn addStudent">Add</a>
         </div>
-        <div class="tableTop">
-            <span class="left">Students List</span>
-            <div class="right">
-                <input type="text" placeholder="Search Student by Name">
-                <a class="addBtn" href="/admin/users/new">Add</a>
-            </div>
-        </div>
-        <div class="tableContainer">
+      </div>
+      <div class="tableContainer">
         <table class="userListTable">
-            <thead>
-                <tr>
-                    <th>SN</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sample Name</td>
-                    <td>sampleemail.123@gmail.com</td>
-                    <td>9899999989</td>
-                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                    <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Sample Name</td>
-                    <td>sampleemail.123@gmail.com</td>
-                    <td>9899999989</td>
-                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                    <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Sample Name</td>
-                    <td>sampleemail.123@gmail.com</td>
-                    <td>9899999989</td>
-                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                    <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Sample Name</td>
-                    <td>sampleemail.123@gmail.com</td>
-                    <td>9899999989</td>
-                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                    <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Sample Name</td>
-                    <td>sampleemail.123@gmail.com</td>
-                    <td>9899999989</td>
-                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                    <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Sample Name</td>
-                    <td>sampleemail.123@gmail.com</td>
-                    <td>9899999989</td>
-                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                    <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Sample Name</td>
-                    <td>sampleemail.123@gmail.com</td>
-                    <td>9899999989</td>
-                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                    <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Sample Name</td>
-                    <td>sampleemail.123@gmail.com</td>
-                    <td>9899999989</td>
-                    <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                    <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th>SN</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Sample Name</td>
+              <td>sampleemail.123@gmail.com</td>
+              <td>9899999989</td>
+              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Sample Name</td>
+              <td>sampleemail.123@gmail.com</td>
+              <td>9899999989</td>
+              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Sample Name</td>
+              <td>sampleemail.123@gmail.com</td>
+              <td>9899999989</td>
+              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Sample Name</td>
+              <td>sampleemail.123@gmail.com</td>
+              <td>9899999989</td>
+              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Sample Name</td>
+              <td>sampleemail.123@gmail.com</td>
+              <td>9899999989</td>
+              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Sample Name</td>
+              <td>sampleemail.123@gmail.com</td>
+              <td>9899999989</td>
+              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Sample Name</td>
+              <td>sampleemail.123@gmail.com</td>
+              <td>9899999989</td>
+              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Sample Name</td>
+              <td>sampleemail.123@gmail.com</td>
+              <td>9899999989</td>
+              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+          </tbody>
         </table>
-        </div>
+      </div>
     </div>
   </section>
+  <script type="text/javascript" src="https://livejs.com/live.js"></script>
 </body>
 
 </html>
