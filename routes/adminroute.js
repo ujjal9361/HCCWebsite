@@ -3,9 +3,31 @@ const ValidUser = require("../models/validUser");
 
 //Admin Dashboard
 router.get("/", (req, res) => {
-  res.render("auth/adminDashboard");
+  //based on whether one is logged in as an admin, we redirect them to either login page or to dashboard
+  if (!req.user) {
+    return res.redirect("/admin/login");
+  }
+  if (req.user.userType === "admin") {
+    return res.redirect("/admin/dashboard");
+  }
+  res.redirect("/admin/login");
+});
+router.get("/dashboard", checkAdminPrivilege, async (req, res) => {
+  //Pass students,teachers and admins object
+  try {
+    const users = await ValidUser.find({});
+    const students = users.filter((user) => user.userType === "student");
+    const teachers = users.filter((user) => user.userType === "teacher");
+    const admins = users.filter((user) => user.userType === "admin");
+    res.render("auth/adminDashboard", { students, teachers, admins });
+  } catch {
+    res.status(500).send("Problem with server");
+  }
 });
 
+router.get("/login", (req, res) => {
+  res.send("Enter your login credentials");
+});
 router.get("/users", (req, res) => {
   res.render("auth/users");
 });
@@ -15,7 +37,7 @@ router.get("/users/new", (req, res) => {
 });
 
 //Taking the form data submitted by the admin
-router.post("/users/new", (req, res) => {
+router.post("/users", (req, res) => {
   const { fullName, email, phoneNumber, userType } = req.body;
   //Check to see whether a user by that email or phoneNumber already exists in our validUsers collection
   ValidUser.findOne({ email: email }, (err, validUser) => {
@@ -51,11 +73,16 @@ router.post("/users/new", (req, res) => {
         });
         await newValidUser.save();
         //Redirect to the /admin/users where there are all users listed along with a flash message.
-        res.redirect("/admin/users");
+        res.redirect("/admin");
       }
     });
     //If admin is adding a new valid user
   });
 });
-
+function checkAdminPrivilege(req, res, next) {
+  if (req.user.userType === "admin") {
+    next();
+  }
+  res.redirect("/admin/login");
+}
 module.exports = router;

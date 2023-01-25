@@ -33,3 +33,24 @@ canceladdUserModalBtn.addEventListener("click", () => {
 searchInput.addEventListener("keyup", () => {
   filter(tableRow, searchInput);
 });
+
+//active for tables and
+//activeUserList for the tab
+
+const tabButtons = document.querySelectorAll("[data-target-table]");
+console.log(tabButtons);
+const tables = document.querySelectorAll(".userListTable");
+console.log(tables);
+tabButtons.forEach((tabButton) => {
+  const targetTable = document.querySelector(tabButton.dataset.targetTable);
+  tabButton.addEventListener("click", () => {
+    tables.forEach((table) => {
+      table.classList.remove("active");
+    });
+    targetTable.classList.add("active");
+    tabButtons.forEach((tabButton) => {
+      tabButton.classList.remove("activeUserList");
+    });
+    tabButton.classList.add("activeUserList");
+  });
+});

@@ -26,15 +26,15 @@
   </nav>
   <section class="userCountSection">
     <div class="card studentCard">
-      <div class="userCount">288</div>
+      <div class="userCount"><%=students.length%></div>
       <div class="userType">Students</div>
     </div>
     <div class="card teacherCard">
-      <div class="userCount">22</div>
+      <div class="userCount"><%=teachers.length%></div>
       <div class="userType">Teachers</div>
     </div>
     <div class="card adminCard">
-      <div class="userCount">01</div>
+      <div class="userCount"><%=admins.length%></div>
       <div class="userType">Admin</div>
     </div>
   </section>
@@ -53,12 +53,14 @@
       </form>
     </dialog>
   </section>
+  <!-- This is section for studetns  -->
+  <!-- We iterate over each student and render each of them -->
   <section class="userList">
     <div class="lists">
       <div class="usersBtn">
-        <a href="" class="studentListBtn activeUserList">Student</a>
-        <a href="" class="teacherListBtn">Teacher</a>
-        <a href="" class="adminListBtn">Admin</a>
+        <a data-target-table="#studentTable" class="studentListBtn activeUserList">Student</a>
+        <a  data-target-table="#teacherTable" class="teacherListBtn">Teacher</a>
+        <a  data-target-table="#adminTable" class="adminListBtn">Admin</a>
       </div>
       <div class="tableTop">
         <span class="left">Students List</span>
@@ -68,84 +70,16 @@
         </div>
       </div>
       <div class="tableContainer">
-        <table class="userListTable">
-          <thead>
-            <tr>
-              <th>SN</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Ayush Acharya</td>
-              <td>sampleemail.123@gmail.com</td>
-              <td>9899999989</td>
-              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Ujjal Shrestha</td>
-              <td>sampleemail.123@gmail.com</td>
-              <td>9899999989</td>
-              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Kushal Upreti</td>
-              <td>sampleemail.123@gmail.com</td>
-              <td>9899999989</td>
-              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Sailesh Poudel</td>
-              <td>sampleemail.123@gmail.com</td>
-              <td>9899999989</td>
-              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Anurag Gotame</td>
-              <td>sampleemail.123@gmail.com</td>
-              <td>9899999989</td>
-              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Roshan Gurung</td>
-              <td>sampleemail.123@gmail.com</td>
-              <td>9899999989</td>
-              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Json Acharya</td>
-              <td>sampleemail.123@gmail.com</td>
-              <td>9899999989</td>
-              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Nikhil Baniya</td>
-              <td>sampleemail.123@gmail.com</td>
-              <td>9899999989</td>
-              <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-              <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-            </tr>
-          </tbody>
+        <table class="userListTable active" id="studentTable">
+          <%-include('./partials/_tableHeadBody',{users:students})%>
         </table>
+        <table class="userListTable" id="teacherTable">
+          <%-include('./partials/_tableHeadBody',{users:teachers})%>
+        </table>
+        <table class="userListTable" id="adminTable">
+          <%-include('./partials/_tableHeadBody',{users:admins})%>
+        </table>
+  
       </div>
     </div>
   </section>

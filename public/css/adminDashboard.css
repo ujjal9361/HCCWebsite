@@ -93,7 +93,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.addUserModal::backdrop{
+.addUserModal::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .addUserModal input {
@@ -176,37 +176,43 @@
   background: white !important;
 }
 .userListTable {
+  display: none;
+}
+.userListTable.active {
+  display: block;
+}
+.userListTable.active {
   border-collapse: collapse;
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
-.userListTable tr:nth-of-type(even) {
+.userListTable.active tr:nth-of-type(even) {
   background-color: rgb(245, 245, 245);
 }
-.userListTable thead tr {
+.userListTable.active thead tr {
   background-color: var(--textColor);
   text-align: left;
   color: white;
 }
-.userListTable tr th {
+.userListTable.active tr th {
   font-weight: 500;
 }
-.userListTable tr th,
-.userListTable tr td {
+.userListTable.active tr th,
+.userListTable.active tr td {
   padding: 0.5rem 1.5rem;
   white-space: nowrap;
 }
-.userListTable tbody tr td:nth-child(1) {
+.userListTable.active tbody tr td:nth-child(1) {
   text-align: center;
 }
-.userListTable .fa-trash-o,
-.userListTable .fa-pencil-square-o {
+.userListTable.active .fa-trash-o,
+.userListTable.active .fa-pencil-square-o {
   margin: auto;
 }
-.userListTable tbody tr {
+.userListTable.active tbody tr {
   border-bottom: 1px solid rgb(230, 230, 230);
 }
-.userListTable tbody tr:last-of-type {
+.userListTable.active tbody tr:last-of-type {
   border-bottom: 3px solid var(--textColor);
 }
 .fa {

@@ -1,5 +1,5 @@
 <p><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
-<form action="/admin/users/new" method="post">
+<form action="/admin/users" method="post">
     <%-include('../components/userDetailFormFields',{fullName:locals.fullName,email:locals.email,phoneNumber:locals.phoneNumber})%>
     
     <button type="submit">Add User</button>
