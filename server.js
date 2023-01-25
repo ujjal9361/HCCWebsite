@@ -1,7 +1,10 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 //Requiring packages
 const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv").config();
 const methodOverride = require("method-override");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -60,7 +63,7 @@ app.use("/teachers", teachersRouter);
 app.use("/admin", adminRouter);
 
 //Listening at a port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Server listening at port ${port}.`);
 });
