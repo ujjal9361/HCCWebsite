@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const ValidUser = require("../models/validUser");
-
 //Admin Dashboard
 router.get("/", (req, res) => {
   res.render("auth/adminDashboard");
