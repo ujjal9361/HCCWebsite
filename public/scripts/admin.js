@@ -1,23 +1,21 @@
+//Variables
 let addUserModal = document.querySelector(".addUserModal");
+let searchInput = document.querySelector(".searchInput");
 let canceladdUserModalBtn = document.querySelector(".addUserModal .cancelBtn");
 let addBtn = document.querySelector(".addBtn");
-addBtn.addEventListener("click", ()=>{
-    if(addBtn.classList.contains("addStudent")){
-        document.querySelector("#studentRadio").checked = true;
+let tableRow = document.querySelectorAll(".userListTable tbody tr");
+//Functions
+function filter(tableRow, searchInput) {
+  let inputValue = searchInput.value.toLowerCase().trim();
+  tableRow.forEach((row) => {
+    let fullName = row.children[1].textContent.toLowerCase();
+    if (fullName.includes(inputValue)) {
+      row.style.display = "";
+    } else {
+      row.style.display = "none";
     }
-<<<<<<< HEAD
-    else if(addBtn.classList.contains("addTeacher")){
-        document.querySelector("#teacherRadio").checked = true;
-    }
-    addUserModal.showModal();
-})
-canceladdUserModalBtn.addEventListener("click",()=>{
-    addUserModal.close();
-})
-=======
   });
 }
-
 //Main
 addBtn.addEventListener("click", () => {
   if (addBtn.classList.contains("addStudent")) {
@@ -54,4 +52,3 @@ tabButtons.forEach((tabButton) => {
     tabButton.classList.add("activeUserList");
   });
 });
->>>>>>> c0a4ca051d8861c854667c7eea9ea3864fa08fad
