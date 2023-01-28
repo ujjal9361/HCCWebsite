@@ -38,11 +38,21 @@
       <div class="userType">Admin</div>
     </div>
   </section>
+  <%if( req.session.errorObject != null){%>
+    <%console.log(req.session.errorObject)%>
+    <%locals.errorMessage=req.session.errorObject.errorMessage%>
+    <%locals.hasError=req.session.errorObject.hasError%>
+    <%locals.fullName=req.session.errorObject.fullName%>
+    <%locals.email=req.session.errorObject.email%>
+    <%locals.phoneNumber=req.session.errorObject.phoneNumber%>
+    <%locals.userType=req.session.errorObject.userType%>
+  <%}%>
+
   <section class="addUserPopUp">
     <dialog class="addUserModal">
       <h1 class="title">Add a Student</h1>
-      <p><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
-      <form action="/admin/users" method="post">
+      <form action="/admin/users" method="post">  
+        <p><%=locals.errorMessage?locals.errorMessage:""%></p>
         <%-include('../components/userDetailFormFields',{fullName:locals.fullName,email:locals.email,phoneNumber:locals.phoneNumber})%>
         <input type='radio' name="userType" id="studentRadio" value="student" checked>
         <input type='radio' name="userType" id="teacherRadio" value="teacher">
@@ -98,7 +108,13 @@
     </div>
   </section>
 </body>
-
+<%if(locals.hasError != null){%>
+<script>
+  let addUserModalCopy = document.querySelector(".addUserModal");
+  addUserModalCopy.showModal();
+  </script>
+<%}%>
+<%req.session.errorObject=null%>
 </html>
 
 

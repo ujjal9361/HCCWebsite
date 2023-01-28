@@ -21,6 +21,7 @@ addBtn.addEventListener("click", () => {
   addUserModal.showModal();
 });
 canceladdUserModalBtn.addEventListener("click", () => {
+  console.log("cliked cancel");
   addUserModal.close();
 });
 searchInput.addEventListener("keyup", () => {
@@ -31,9 +32,7 @@ searchInput.addEventListener("keyup", () => {
 //activeUserList for the tab
 
 const tabButtons = document.querySelectorAll("[data-target-table]");
-console.log(tabButtons);
 const tables = document.querySelectorAll(".userListTable");
-console.log(tables);
 tabButtons.forEach((tabButton) => {
   const targetTable = document.querySelector(tabButton.dataset.targetTable);
   tabButton.addEventListener("click", () => {
@@ -45,7 +44,16 @@ tabButtons.forEach((tabButton) => {
       tabButton.classList.remove("activeUserList");
     });
     tabButton.classList.add("activeUserList");
-    const targetRadioButton=document.querySelector(tabButton.dataset.radiobutton);
-    targetRadioButton.checked=true;
+    const targetRadioButton = document.querySelector(
+      tabButton.dataset.radiobutton
+    );
+    targetRadioButton.checked = true;
   });
 });
+
+function askToDeleteEvent(eventForm) {
+  let result = confirm(
+    "This will permanently delete all the data of the event. We cannot recover them once you delete it. \nAre you sure you want to permanently delete this event?"
+  );
+  if (result) eventForm.submit();
+}
