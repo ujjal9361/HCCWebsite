@@ -45,6 +45,7 @@ router.post("/users", (req, res) => {
     }
     //If user is already listed
     if (validUser) {
+      //We will render the route the user to admin/dashboard
       return res.render("auth/newUser", {
         flashMessage: "User with this email already in database",
         fullName,
@@ -72,7 +73,7 @@ router.post("/users", (req, res) => {
         });
         await newValidUser.save();
         //Redirect to the /admin/users where there are all users listed along with a flash message.
-        res.redirect("/admin");
+        res.redirect("/admin/dashboard");
       }
     });
     //If admin is adding a new valid user
