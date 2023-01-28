@@ -101,9 +101,8 @@ router.post("/login", (req, res) => {
         } else {
           req.session.isAuthenticated = validUser.userType;
           req.session.userId = validUser._id;
-          //If the login request came from admin/login, we want to redirect the user to admin/dashboard
-          const renderingUrl = req.body.renderingUrl;
-          if (renderingUrl == "/admin/login") {
+
+          if (validUser.userType == "admin") {
             return res.redirect("/admin/dashboard");
           }
           res.redirect("/");
