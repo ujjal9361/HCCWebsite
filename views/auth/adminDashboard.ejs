@@ -59,9 +59,23 @@
   <section class="userList">
     <div class="lists">
       <div class="usersBtn">
-        <a data-target-table="#studentTable" data-radioButton="#studentRadio" class="studentListBtn activeUserList">Student</a>
-        <a  data-target-table="#teacherTable" data-radioButton="#teacherRadio" class="teacherListBtn">Teacher</a>
-        <a  data-target-table="#adminTable" data-radioButton="#adminRadio" class="adminListBtn">Admin</a>
+
+        <!-- If the currenTab is null, we will select student and studentTable to be active  -->
+        <%const currentTab=req.session.currentTab%>
+        <%if(currentTab=="teacher"){%>
+          <a data-target-table="#studentTable" data-radioButton="#studentRadio" class="studentListBtn ">Student</a>
+          <a  data-target-table="#teacherTable" data-radioButton="#teacherRadio" class="teacherListBtn activeUserList">Teacher</a>
+          <a  data-target-table="#adminTable" data-radioButton="#adminRadio" class="adminListBtn">Admin</a>
+        <%}else if(currentTab=="admin"){%>
+          <a data-target-table="#studentTable" data-radioButton="#studentRadio" class="studentListBtn ">Student</a>
+          <a  data-target-table="#teacherTable" data-radioButton="#teacherRadio" class="teacherListBtn ">Teacher</a>
+          <a  data-target-table="#adminTable" data-radioButton="#adminRadio" class="adminListBtn activeUserList">Admin</a>
+          <%}else{%>
+            <a data-target-table="#studentTable" data-radioButton="#studentRadio" class="studentListBtn activeUserList">Student</a>
+            <a  data-target-table="#teacherTable" data-radioButton="#teacherRadio" class="teacherListBtn ">Teacher</a>
+            <a  data-target-table="#adminTable" data-radioButton="#adminRadio" class="adminListBtn ">Admin</a>
+        <%}%>
+       
       </div>
       <div class="tableTop">
         <span class="left">Students List</span>
@@ -70,17 +84,40 @@
           <a class="btn addBtn addStudent">Add</a>
         </div>
       </div>
-      <div class="tableContainer">
-        <table class="userListTable active" id="studentTable">
+      <%if(currentTab=="teacher"){%>
+        <table class="userListTable " id="studentTable">
           <%-include('./partials/_tableHeadBody',{users:students})%>
         </table>
-        <table class="userListTable" id="teacherTable">
+        <table class="userListTable active" id="teacherTable">
           <%-include('./partials/_tableHeadBody',{users:teachers})%>
         </table>
-        <table class="userListTable" id="adminTable">
+        <table class="userListTable " id="adminTable">
           <%-include('./partials/_tableHeadBody',{users:admins})%>
-        </table>
-  
+        </table>      
+        <%}else if(currentTab=="admin"){%>
+          <table class="userListTable " id="studentTable">
+            <%-include('./partials/_tableHeadBody',{users:students})%>
+          </table>
+          <table class="userListTable" id="teacherTable">
+            <%-include('./partials/_tableHeadBody',{users:teachers})%>
+          </table>
+          <table class="userListTable active" id="adminTable">
+            <%-include('./partials/_tableHeadBody',{users:admins})%>
+          </table>      
+          <%}else{%>
+            <div class="tableContainer">
+              <table class="userListTable active" id="studentTable">
+                <%-include('./partials/_tableHeadBody',{users:students})%>
+              </table>
+              <table class="userListTable" id="teacherTable">
+                <%-include('./partials/_tableHeadBody',{users:teachers})%>
+              </table>
+              <table class="userListTable" id="adminTable">
+                <%-include('./partials/_tableHeadBody',{users:admins})%>
+              </table>      
+          <%}%>
+          <%req.session.currentTab=null%>
+     
       </div>
     </div>
   </section>

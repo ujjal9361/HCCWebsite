@@ -74,7 +74,7 @@ router.post("/signup", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("auth/login");
+  res.render("auth/login", { req });
 });
 router.post("/login", (req, res) => {
   //Check for the email and password in database
@@ -101,6 +101,11 @@ router.post("/login", (req, res) => {
         } else {
           req.session.isAuthenticated = validUser.userType;
           req.session.userId = validUser._id;
+          //If the login request came from admin/login, we want to redirect the user to admin/dashboard
+          const renderingUrl = req.body.renderingUrl;
+          if (renderingUrl == "/admin/login") {
+            return res.redirect("/admin/dashboard");
+          }
           res.redirect("/");
         }
       }

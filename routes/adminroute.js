@@ -11,21 +11,21 @@ router.get("/", (req, res) => {
   }
   res.redirect("/admin/login");
 });
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", checkAdminPrivilege, async (req, res) => {
   //Pass students,teachers and admins object
   try {
     const users = await ValidUser.find({});
     const students = users.filter((user) => user.userType === "student");
     const teachers = users.filter((user) => user.userType === "teacher");
     const admins = users.filter((user) => user.userType === "admin");
-    res.render("auth/adminDashboard", { students, teachers, admins });
+    res.render("auth/adminDashboard", { students, teachers, admins, req });
   } catch {
     res.status(500).send("Problem with server");
   }
 });
 
 router.get("/login", (req, res) => {
-  res.send("Enter your login credentials");
+  res.render("auth/login",{req});
 });
 router.get("/users", (req, res) => {
   res.render("auth/users");
@@ -73,15 +73,20 @@ router.post("/users", (req, res) => {
         });
         await newValidUser.save();
         //Redirect to the /admin/users where there are all users listed along with a flash message.
+        req.session.currentTab = newValidUser.userType;
         res.redirect("/admin/dashboard");
       }
     });
     //If admin is adding a new valid user
   });
 });
-function checkAdminPrivilege(req, res, next) {
-  if (req.user.userType === "admin") {
-    next();
+async function checkAdminPrivilege(req, res, next) {
+  try {
+    if (req.user.userType === "admin") {
+      return next();
+    }
+  } catch {
+    return res.redirect("/admin/login");
   }
   res.redirect("/admin/login");
 }

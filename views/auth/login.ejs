@@ -38,6 +38,7 @@
         <div class="form-row">
           <i class="fa fa-lock  inputLogo" aria-hidden="true"></i><input type='password' required name="password" id="password" placeholder="Enter your password" value="<%=locals.password?locals.password:""%>">
         </div>
+        <input type="hidden" name="renderingUrl" value="<%=req.originalUrl%>">
         <button type="submit" class="btn mainFormBtn">LogIn</button>
         <p class="signUpInsteadLine"><span> New here? </span><a href="/signup" style="text-decoration: underline;">Sign Up</a></p>
       </form>
