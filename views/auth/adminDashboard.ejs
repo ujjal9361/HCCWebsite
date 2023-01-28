@@ -42,10 +42,11 @@
     <dialog class="addUserModal">
       <h1 class="title">Add a Student</h1>
       <p><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
-      <form action="/admin/users/new" method="post">
+      <form action="/admin/users" method="post">
         <%-include('../components/userDetailFormFields',{fullName:locals.fullName,email:locals.email,phoneNumber:locals.phoneNumber})%>
-        <input type='radio' name="userType" id="studentRadio" value="student">
+        <input type='radio' name="userType" id="studentRadio" value="student" checked>
         <input type='radio' name="userType" id="teacherRadio" value="teacher">
+        <input type='radio' name="userType" id="adminRadio" value="admin">
         <div class="btns">
           <button type="button" class="cancelBtn btn">Cancel</button>
           <button type="submit" class="btn">Add</button>
@@ -58,9 +59,9 @@
   <section class="userList">
     <div class="lists">
       <div class="usersBtn">
-        <a data-target-table="#studentTable" class="studentListBtn activeUserList">Student</a>
-        <a  data-target-table="#teacherTable" class="teacherListBtn">Teacher</a>
-        <a  data-target-table="#adminTable" class="adminListBtn">Admin</a>
+        <a data-target-table="#studentTable" data-radioButton="#studentRadio" class="studentListBtn activeUserList">Student</a>
+        <a  data-target-table="#teacherTable" data-radioButton="#teacherRadio" class="teacherListBtn">Teacher</a>
+        <a  data-target-table="#adminTable" data-radioButton="#adminRadio" class="adminListBtn">Admin</a>
       </div>
       <div class="tableTop">
         <span class="left">Students List</span>

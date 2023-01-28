@@ -18,11 +18,6 @@ function filter(tableRow, searchInput) {
 }
 //Main
 addBtn.addEventListener("click", () => {
-  if (addBtn.classList.contains("addStudent")) {
-    document.querySelector("#studentRadio").checked = true;
-  } else if (addBtn.classList.contains("addTeacher")) {
-    document.querySelector("#teacherRadio").checked = true;
-  }
   addUserModal.showModal();
 });
 canceladdUserModalBtn.addEventListener("click", () => {
@@ -50,5 +45,7 @@ tabButtons.forEach((tabButton) => {
       tabButton.classList.remove("activeUserList");
     });
     tabButton.classList.add("activeUserList");
+    const targetRadioButton=document.querySelector(tabButton.dataset.radiobutton);
+    targetRadioButton.checked=true;
   });
 });
