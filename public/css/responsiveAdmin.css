@@ -3,3 +3,31 @@
         display: block;
     }
 }
+@media screen and (max-width: 450px) {
+    #adminName{
+        display: none;
+    }
+    .usersBtn{
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 20px;
+        border: none;
+    }
+    .usersBtn a{
+        padding: 0.8rem 1rem;
+    }
+    .tableTop{
+        text-align: center;
+        flex-direction: column-reverse;
+    }
+    .tableTop .left{
+        /* User list table head. Ex: 'Students List' */
+        margin-top: 20px;
+        font-weight: bold;
+    }
+}
+@media screen and (max-width: 315px) {
+    .userList .right .searchInput{
+        margin-bottom: 20px;
+    }
+}
