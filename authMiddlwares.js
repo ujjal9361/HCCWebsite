@@ -2,7 +2,7 @@ const ValidUser = require("./models/validUser");
 function isTeacherOrAdmin(req, res, next) {
   if (
     req.session.isAuthenticated == "teacher" ||
-    req.session.isAuthenticated == "teacher"
+    req.session.isAuthenticated == "admin"
   ) {
     next();
   } else {
