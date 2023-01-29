@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,29 +8,66 @@
   <title>Sign Up</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script type="text/javascript" src="https://livejs.com/live.js"></script>
 </head>
+
 <body>
   <div class="signUpContainer loginSignUpContainer">
-      <div class="leftSection">
+    <div class="leftSection">
       <div class="content">
         <h1 style="font-size: 2.5rem;">Already have an account?</h1>
         <p>Login to access the information and resources</p>
         <a href="/login" class="btn leftBtn">Login</a>
       </div>
-  </div>
-  <div class="rightSection">
+    </div>
+    <div class="rightSection">
       <form action="/signup" method="post" class="logSignUpForm">
-          <h1 style="margin: 1.5rem 0;">Sign Up</h1>
+        <h1 style="margin: 1.5rem 0;">Sign Up</h1>
         <p><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
         <%-include('../components/userDetailFormFields',{fullName:locals.fullName,email:locals.email,phoneNumber:locals.phoneNumber})%>
         <div class="form-row">
-          <input type='password' required name="password" id="password" placeholder="Enter your password" value="<%=locals.password?locals.password:""%>">
+          <input type='password' required name="password" id="password" placeholder="Set your password" value="<%=locals.password?locals.password:""%>">
+          <div class="eyeIcons" onclick="togglePasswordVisibility(this.parentNode.children[0], this)">
+            <i class="fa fa-eye"></i>
+            <i class="fa fa-eye-slash active"></i>
+          </div>
         </div>
-        <button type="submit" class="btn mainFormBtn">SignUp</button>
+        <div class="form-row">
+          <input type='password' required name="password" id="rePassword" placeholder="Confirm your password" value="<%=locals.password?locals.password:""%>">
+          <div class="eyeIcons" onclick="togglePasswordVisibility(this.parentNode.children[0], this)">
+            <i class="fa fa-eye"></i>
+            <i class="fa fa-eye-slash active"></i>
+          </div>
+        </div>
+        <div class="confirmPasswordMsg">Please make sure your passwords match</div>
+        <button type="button" class="btn mainFormBtn" onclick="validateAndSubmit()">SignUp</button>
         <p class="loginInsteadLine"><span> Already have an account? </span><a href="/login" style="text-decoration: underline;">Login</a></p>
       </form>
     </div>
   </div>
+  <script>
+    function validateAndSubmit() {
+      let password = document.querySelector("#password");
+      let rePassword = document.querySelector("#rePassword");
+      let confirmPasswordMsg = document.querySelector(".confirmPasswordMsg");
+      if (password != rePassword) {
+        rePassword.style.border = "1px solid red";
+        confirmPasswordMsg.classList.add("active");
+      }
+    }
+    function togglePasswordVisibility(passwordInput, eyeIconContainer) {
+      let eyeIcons = eyeIconContainer.children;
+      //eyeIcon[0] = eye open icon
+      //eyeIcon[1] = eye close icon
+      if (eyeIcons[0].classList.contains("active"))
+        passwordInput.type = "password";
+      else
+        passwordInput.type = "text";
+      eyeIcons[0].classList.toggle("active");
+      eyeIcons[1].classList.toggle("active");
+    }
+  </script>
 </body>
+
 </html>

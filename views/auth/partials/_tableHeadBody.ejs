@@ -18,7 +18,7 @@
         <td><%=user.phoneNumber%></td>
         <td><a href="<%=`/admin/users/${user._id}/edit`%>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
         <td><form action="<%=`/admin/users/${user._id}?_method=DELETE` %>" method="POST">
-          <button type="button" ><i class="fa fa-trash-o" aria-hidden="true" onclick="askToDeleteEvent(this.parentNode.parentNode)"></i></button>
+          <button type="button" ><i class="fa fa-trash-o" aria-hidden="true" onclick="askToDeleteUserData(this.parentNode.parentNode)"></i></button>
         </form></td>
       </tr>
     <%})%>
