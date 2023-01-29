@@ -18,21 +18,19 @@ router.get("/dashboard", async (req, res) => {
     const students = users.filter((user) => user.userType === "student");
     const teachers = users.filter((user) => user.userType === "teacher");
     const admins = users.filter((user) => user.userType === "admin");
-    res.render("auth/adminDashboard", { students, teachers, admins, req });
+    return res.render("auth/adminDashboard", {
+      students,
+      teachers,
+      admins,
+      req,
+    });
   } catch {
     res.status(500).send("Problem with server");
   }
 });
 
 router.get("/login", (req, res) => {
-  res.render("auth/login",{req});
-});
-router.get("/users", (req, res) => {
-  res.render("auth/users");
-});
-//Form for admin to add users
-router.get("/users/new", (req, res) => {
-  res.render("auth/newUser.ejs");
+  res.render("auth/login", { req });
 });
 
 //Taking the form data submitted by the admin
@@ -46,24 +44,28 @@ router.post("/users", (req, res) => {
     //If user is already listed
     if (validUser) {
       //We will render the route the user to admin/dashboard
-      return res.render("auth/newUser", {
-        flashMessage: "User with this email already in database",
+      req.session.errorObject = {
+        hasError: true,
+        errorMessage: "User with that email already in database",
         fullName,
         email,
         phoneNumber,
         userType,
-      });
+      };
+      return res.redirect("/admin/dashboard");
     }
 
     ValidUser.findOne({ phoneNumber }, async (err, validUser) => {
       if (validUser) {
-        return res.render("auth/newUser", {
-          flashMessage: "User with that phone number already in database",
+        req.session.errorObject = {
+          hasError: true,
+          errorMessage: "User with that phoneNumber already in database",
           fullName,
           email,
           phoneNumber,
           userType,
-        });
+        };
+        return res.redirect("/admin/dashboard");
       } else {
         const newValidUser = new ValidUser({
           fullName,
@@ -80,6 +82,23 @@ router.post("/users", (req, res) => {
     //If admin is adding a new valid user
   });
 });
+
+//Updating an user
+router.get("/users/:id/edit", (req, res) => {
+  res.send(`Edit page for user with id ${req.params.id}`);
+});
+
+//Deleting an user
+router.delete("/users/:id", async (req, res) => {
+  try {
+    const toBeDeleted = await ValidUser.findById(req.params.id);
+    req.session.currentTab = toBeDeleted.userType;
+    await toBeDeleted.delete();
+    res.redirect("/admin/dashboard");
+  } catch (e) {
+    res.send(JSON.parse(e));
+  }
+});
 async function checkAdminPrivilege(req, res, next) {
   try {
     if (req.user.userType === "admin") {
@@ -90,4 +109,5 @@ async function checkAdminPrivilege(req, res, next) {
   }
   res.redirect("/admin/login");
 }
+
 module.exports = router;
