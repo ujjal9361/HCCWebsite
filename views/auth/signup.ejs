@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/responsive.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script type="text/javascript" src="https://livejs.com/live.js"></script>
 </head>
 
 <body>
@@ -34,7 +33,7 @@
           </div>
         </div>
         <div class="form-row">
-          <input type='password' required name="password" id="rePassword" placeholder="Confirm your password" value="<%=locals.password?locals.password:""%>">
+          <input type='password' required name="rePassword" id="rePassword" placeholder="Confirm your password" value="<%=locals.password?locals.password:""%>">
           <div class="eyeIcons" onclick="togglePasswordVisibility(this.parentNode.children[0], this)">
             <i class="fa fa-eye"></i>
             <i class="fa fa-eye-slash active"></i>
@@ -48,8 +47,8 @@
   </div>
   <script>
     function validateAndSubmit() {
-      let password = document.querySelector("#password");
-      let rePassword = document.querySelector("#rePassword");
+      let password = document.querySelector("#password").value;
+      let rePassword = document.querySelector("#rePassword").value;
       let confirmPasswordMsg = document.querySelector(".confirmPasswordMsg");
       if (password != rePassword) {
         rePassword.style.border = "1px solid red";
