@@ -23,7 +23,7 @@
     <div class="rightSection">
       <form action="/signup" method="post" class="logSignUpForm">
         <h1 style="margin: 1.5rem 0;">Sign Up</h1>
-        <p><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
+        <p style="text-align: center;"><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
         <%-include('../components/userDetailFormFields',{fullName:locals.fullName,email:locals.email,phoneNumber:locals.phoneNumber})%>
         <div class="form-row">
           <input type='password' required name="password" id="password" placeholder="Set your password" value="<%=locals.password?locals.password:""%>">
@@ -40,21 +40,33 @@
           </div>
         </div>
         <div class="confirmPasswordMsg">Please make sure your passwords match</div>
-        <button type="button" class="btn mainFormBtn" onclick="validateAndSubmit()">SignUp</button>
+        <button type="button" class="btn mainFormBtn" onclick="validateAndSubmit(this.parentNode)">SignUp</button>
         <p class="loginInsteadLine"><span> Already have an account? </span><a href="/login" style="text-decoration: underline;">Login</a></p>
       </form>
     </div>
   </div>
   <script>
-    function validateAndSubmit() {
-      let password = document.querySelector("#password").value;
-      let rePassword = document.querySelector("#rePassword").value;
+    function validateAndSubmit(form) {
+      let inputs = document.querySelectorAll(".logSignUpForm .form-row input");
+      let password = document.querySelector("#password");
+      let rePassword = document.querySelector("#rePassword");
       let confirmPasswordMsg = document.querySelector(".confirmPasswordMsg");
-      if (password != rePassword) {
+      let isEmpty = false;
+      inputs.forEach(input => {
+        if (input.value == "") {
+          isEmpty = true;
+        }
+      })
+      if (isEmpty) {
+        alert("Please fill up all the required fields");
+      } else if (password.value !== rePassword.value) {
         rePassword.style.border = "1px solid red";
         confirmPasswordMsg.classList.add("active");
+      } else {
+        form.submit();
       }
     }
+
     function togglePasswordVisibility(passwordInput, eyeIconContainer) {
       let eyeIcons = eyeIconContainer.children;
       //eyeIcon[0] = eye open icon
