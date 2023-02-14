@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,9 @@
   <title>Document</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/responsive.css">
-  <script type="text/javascript" src="https://livejs.com/live.js"></script>
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-  integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
   <div class="loginContainer loginSignUpContainer">
     <div class="leftSection">
@@ -27,21 +22,37 @@
     </div>
     <div class="rightSection">
       <form action="/login" method="post" class="logSignUpForm">
-          <div class="userLogo">
-              <i class="fa fa-user" aria-hidden="true"></i>
-          </div>
+        <div class="userLogo">
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
         <h1>Login</h1>
-        <p><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
+        <p style="text-align: center;"><%=typeof flashMessage!=='undefined'?flashMessage:""%></p>
         <div class="form-row">
           <i class="fa fa-user-circle inputLogo" aria-hidden="true"></i><input type='email' required name="email" id="email" placeholder="Enter your email" value="<%=locals.email?locals.email:""%>">
         </div>
         <div class="form-row">
           <i class="fa fa-lock  inputLogo" aria-hidden="true"></i><input type='password' required name="password" id="password" placeholder="Enter your password" value="<%=locals.password?locals.password:""%>">
+          <div class="eyeIcons" onclick="togglePasswordVisibility(this.parentNode.children[1], this)">
+            <i class="fa fa-eye"></i>
+            <i class="fa fa-eye-slash active"></i>
+          </div>
         </div>
         <button type="submit" class="btn mainFormBtn">LogIn</button>
         <p class="signUpInsteadLine"><span> New here? </span><a href="/signup" style="text-decoration: underline;">Sign Up</a></p>
       </form>
     </div>
   </div>
+  <script>
+    function togglePasswordVisibility(passwordInput, eyeIconContainer) {
+      eyeIcons = eyeIconContainer.children;
+      if (eyeIcons[0].classList.contains("active"))
+        passwordInput.type = "password";
+      else
+        passwordInput.type = "text";
+      eyeIcons[0].classList.toggle("active");
+      eyeIcons[1].classList.toggle("active");
+    }
+  </script>
 </body>
+
 </html>

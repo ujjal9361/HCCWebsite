@@ -39,20 +39,25 @@
     </div>
   </section>
   <%if( req.session.errorObject != null){%>
-    <%console.log(req.session.errorObject)%>
-    <%locals.errorMessage=req.session.errorObject.errorMessage%>
-    <%locals.hasError=req.session.errorObject.hasError%>
-    <%locals.fullName=req.session.errorObject.fullName%>
-    <%locals.email=req.session.errorObject.email%>
-    <%locals.phoneNumber=req.session.errorObject.phoneNumber%>
-    <%locals.userType=req.session.errorObject.userType%>
+  <%locals.errorMessage=req.session.errorObject.errorMessage%>
+  <%locals.hasError=req.session.errorObject.hasError%>
+  <%locals.fullName=req.session.errorObject.fullName%>
+  <%locals.email=req.session.errorObject.email%>
+  <%locals.phoneNumber=req.session.errorObject.phoneNumber%>
+  <%locals.userType=req.session.errorObject.userType%>
   <%}%>
-
+  <%const currentTab=req.session.currentTab%>
+  <% let studentStatus=teacherStatus=adminStatus=""%>
+  <%currentTab=='admin'?adminStatus='activeUserList':currentTab=='teacher'?teacherStatus='activeUserList':studentStatus='activeUserList'%>
+  <% let studentTableStatus=teacherTableStatus=adminTableStatus=""%>
+  <%currentTab=='admin'?adminTableStatus='active':currentTab=='teacher'?teacherTableStatus='active':studentTableStatus='active'%>
   <section class="addUserPopUp">
     <dialog class="addUserModal">
-      <h1 class="title">Add a Student</h1>
-      <form action="/admin/users" method="post">  
-        <p><%=locals.errorMessage?locals.errorMessage:""%></p>
+      <h1 class="title <%= studentTableStatus %>" id="addStudentTitle">Add a Student</h1>
+      <h1 class="title <%= teacherTableStatus %>" id="addTeacherTitle">Add a Teacher</h1>
+      <h1 class="title <%= adminTableStatus %>" id="addAdminTitle">Add an Admin</h1>
+      <form action="/admin/users" method="post">
+        <p id="errorMsgAddUserModal"><%=locals.errorMessage?locals.errorMessage:""%></p>
         <%-include('../components/userDetailFormFields',{fullName:locals.fullName,email:locals.email,phoneNumber:locals.phoneNumber})%>
         <input type='radio' name="userType" id="studentRadio" value="student" checked>
         <input type='radio' name="userType" id="teacherRadio" value="teacher">
@@ -89,7 +94,7 @@
         </div>
       </div>
 
-      
+
       <table class="userListTable <%=studentTableStatus%>" id="studentTable">
         <%-include('./partials/_tableHeadBody',{users:students})%>
       </table>
@@ -98,12 +103,12 @@
       </table>
       <table class="userListTable <%=adminTableStatus%>" id="adminTable">
         <%-include('./partials/_tableHeadBody',{users:admins})%>
-      </table>      
+      </table>
 
-     
-          <%req.session.currentTab=null%>
-     
-      </div>
+
+      <%req.session.currentTab=null%>
+
+    </div>
     </div>
   </section>
 </body>
@@ -111,9 +116,10 @@
 <script>
   let addUserModalCopy = document.querySelector(".addUserModal");
   addUserModalCopy.showModal();
-  </script>
+</script>
 <%}%>
 <%req.session.errorObject=null%>
+
 </html>
 
 

@@ -32,6 +32,7 @@ router.post("/new", async (req, res) => {
     eventDate: req.body.eventDate,
     publisherId: req.user._id,
   });
+  console.log(req.body.eventDate);
   let article = await newArticle.save();
   res.redirect(`/notices/${article.slug}`);
 });

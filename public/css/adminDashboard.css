@@ -25,6 +25,9 @@
   color: var(--textColor);
   margin-bottom: 0.5rem;
 }
+.active{
+  display: block !important;
+}
 /* Navbar section */
 .navContent {
   margin: auto;
@@ -95,6 +98,9 @@
 }
 .addUserModal::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
+}
+.addUserModal .title{
+  display: none;
 }
 .addUserModal input {
   border: 2px solid var(--textColor);

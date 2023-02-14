@@ -52,6 +52,7 @@ router.post("/users", (req, res) => {
         phoneNumber,
         userType,
       };
+      req.session.currentTab = userType;
       return res.redirect("/admin/dashboard");
     }
 
@@ -65,6 +66,7 @@ router.post("/users", (req, res) => {
           phoneNumber,
           userType,
         };
+        req.session.currentTab = userType;
         return res.redirect("/admin/dashboard");
       } else {
         const newValidUser = new ValidUser({
