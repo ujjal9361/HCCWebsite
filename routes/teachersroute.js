@@ -105,7 +105,9 @@ router.post("/:id/notes", (req, res) => {
     if (err || !req.file) {
       //err will be defined if the file was selected but is invalid by extension name or sizelimit
       //but if the file is not selected, we set the error to be no file selected error
-      err ||= "No file selected";
+      if (!err) {
+        err = "No file selected";
+      }
       res.render(`teachers/notes/new`, {
         note: note,
         ErrorMessage: err,
