@@ -95,6 +95,23 @@
       <div class="btn noteBtn">Notes</div>
     </div>
   </div>
+  <%teachers.forEach((teacher)=>{%>
+
+    <div class="teacherCard">
+        <div class="teacherImg"><img src="#" alt=""></div>
+        <div class="teacherDetails">
+          <div class="name"><%=teacher.fullName%></div>
+          <div class="post"><%=teacher.title?teacher.title:"Professor"%></div>
+          <div class="links">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </div>
+          <div class="btn noteBtn"><a href="<%=`/teachers/${teacher._id}/notes`%>">Notes</a></div>
+        </div>
+      </div>
+
+<%})%>
 </section>
 </section>
 <%-include('../components/footer')%>

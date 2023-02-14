@@ -22,6 +22,10 @@ const validUserSchema = new mongoose.Schema({
   password: {
     type: String,
   },
+  //Teachers will later update their title
+  title: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("ValidUser", validUserSchema);

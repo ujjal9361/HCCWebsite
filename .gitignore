@@ -4,5 +4,6 @@ node_modules/
 1-AuthPlan.txt
 sessionImplementation.txt
 courses.txt
-z-refactor/
-
+z-refactor
+public/uploads/notes/*.pdf
+views/teachers/notes/rough.txt
