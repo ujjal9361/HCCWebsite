@@ -1,0 +1,64 @@
+<div >
+    <label for="title">Title</label>
+    <br>
+    <input type="text" required id="title" name="title" value="<%=note.title%>">
+</div>
+<div >
+    <label for="description">Description</label>
+    <br>
+    <input type="text" required id="description" name="description" value="<%=note.description%>">
+</div>
+<div >
+    <label for="subject">Subject</label>
+    <br>
+    <input type="subject" required id="subject" name="subject" value="<%=note.subject%>">
+</div>
+<div>
+    <fieldset>
+        <legend>Faculty(one or more):</legend>
+        <!-- if the csit or bca is in note.faculty we need to check it  -->
+        <%if(note.faculty.includes("csit")){%>
+            <input type="checkbox" checked id="csit" name="faculty" value="csit">
+            <%}else{%>
+                <input type="checkbox" id="csit" name="faculty" value="csit">
+            <%}%>
+            <label for="csit">Bsc.CSIT</label>
+        <%if(note.faculty.includes("bca")){%>
+            <input type="checkbox" checked id="bca" name="faculty" value="bca">
+            <%}else{%>
+                <input type="checkbox" id="bca" name="faculty" value="bca">
+            <%}%>
+            <label for="bca">BCA</label>       
+    </fieldset>
+</div>
+<div>
+    <label for="semester">Choose a semester:</label>
+    <select name="semester" id="semester">
+       <%resolveSuffix=(num)=>num==1?"1st":num==2?"2nd":`${num}th`%>
+        <%[1,2,3,4,5,6,7,8].forEach((num)=>{%>
+            <%if(note.semester==num){%>
+                <option value="<%=num%>" selected><%=resolveSuffix(num)%></option>
+                <%}else{%>
+                    <option value="<%=num%>" ><%=resolveSuffix(num)%></option>
+            <%}%>
+
+        <%})%>
+    </select>
+</div>
+<div>
+    <label for="noteFile">
+        Choose a pdf or an image
+    </label>
+    <input type="file" name="noteFile" id="noteFile">
+</div>
+
+
+
+
+<!-- subject -->
+<!-- faculty checkboxes -->
+<!-- semester -->
+<!-- file input -->
+
+<!-- When an user clicks edit the note, we will pull all the details of the associted note from the databse
+and populate the fields with existing information -->

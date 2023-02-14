@@ -1,0 +1,6 @@
+<%-include('../../components/ErrorMessage')%>
+<!-- In case that this is from error rerendring we will use the publisherId  -->
+<form action="/teachers/<%=proprietaryTeacher._id||note.publisherId%>/notes" method="post" enctype="multipart/form-data">
+    <%-include('./form_fields')%>
+    <button type='submit'>Add Note</button>
+</form>
