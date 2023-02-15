@@ -11,7 +11,8 @@ router.get("/", (req, res) => {
   }
   res.redirect("/admin/login");
 });
-router.get("/dashboard", checkAdminPrivilege, async (req, res) => {
+// checkAdminPrivilege
+router.get("/dashboard", async (req, res) => {
   //Pass students,teachers and admins object
   try {
     const users = await ValidUser.find({});
