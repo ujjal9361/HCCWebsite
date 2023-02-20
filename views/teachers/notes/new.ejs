@@ -1,6 +1,25 @@
-<%-include('../../components/ErrorMessage')%>
-<!-- In case that this is from error rerendring we will use the publisherId  -->
-<form action="/teachers/<%=proprietaryTeacher._id||note.publisherId%>/notes" method="post" enctype="multipart/form-data">
-    <%-include('./form_fields')%>
-    <button type='submit'>Add Note</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+  <script defer src="/scripts/notices.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <%-include('../../components/ErrorMessage')%>
+  <!-- In case that this is from error rerendring we will use the publisherId  -->
+  <div class="formContainer container">
+    <form action="/teachers/<%=proprietaryTeacher._id||note.publisherId%>/notes" method="post" enctype="multipart/form-data">
+      <%-include('./form_fields')%>
+      <button type='submit' class="btn noteBtn" style="padding: 0.7rem 2rem;">Add Note</button>
+    </form>
+  </div>
+</body>
+
+</html>

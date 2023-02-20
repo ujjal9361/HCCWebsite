@@ -74,15 +74,16 @@
   <section class="userList">
     <div class="lists">
       <div class="usersBtn">
-        <a data-target-table="#studentTable" data-radioButton="#studentRadio" class="studentListBtn <%=studentStatus%>">Student</a>
-          <a  data-target-table="#teacherTable" data-radioButton="#teacherRadio" class="teacherListBtn <%=teacherStatus%>">Teacher</a>
-          <a  data-target-table="#adminTable" data-radioButton="#adminRadio" class="adminListBtn <%=adminStatus%>">Admin</a>
+
+        <a data-target-table="#studentTable" data-user="#addStudentTitle" data-radioButton="#studentRadio" class="studentListBtn <%=studentStatus%>">Student</a>
+          <a  data-target-table="#teacherTable" data-user="#addTeacherTitle" data-radioButton="#teacherRadio" class="teacherListBtn <%=teacherStatus%>">Teacher</a>
+          <a  data-target-table="#adminTable" data-user="#addAdminTitle" data-radioButton="#adminRadio" class="adminListBtn <%=adminStatus%>">Admin</a>
        
       </div>
       <div class="tableTop">
         <span class="left">Students List</span>
         <div class="right">
-          <input type="text" placeholder="Search Student by Name" class="searchInput">
+          <input type="text" placeholder="Search by Name" class="searchInput">
           <a class="btn addBtn addStudent">Add</a>
         </div>
       </div>

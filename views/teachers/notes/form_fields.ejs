@@ -1,19 +1,19 @@
-<div >
-    <label for="title">Title</label>
+<div class="inputContainer">
+    <label for="title" class="inputLabel">Title</label>
     <br>
-    <input type="text" required id="title" name="title" value="<%=note.title%>">
+    <input type="text" class="inputStyle" required id="title" name="title" value="<%=note.title%>">
 </div>
-<div >
-    <label for="description">Description</label>
+<div class="inputContainer">
+    <label for="description" class="inputLabel">Description</label>
     <br>
-    <input type="text" required id="description" name="description" value="<%=note.description%>">
+    <textarea type="text" name="description" id="description" class="textarea" required><%=note.description%></textarea>
 </div>
-<div >
-    <label for="subject">Subject</label>
+<div class="inputContainer">
+    <label for="subject" class="inputLabel">Subject</label>
     <br>
-    <input type="subject" required id="subject" name="subject" value="<%=note.subject%>">
+    <input type="subject" class="inputStyle" required id="subject" name="subject" value="<%=note.subject%>">
 </div>
-<div>
+<div class="inputContainer">
     <fieldset>
         <legend>Faculty(one or more):</legend>
         <!-- if the csit or bca is in note.faculty we need to check it  -->
@@ -31,10 +31,10 @@
             <label for="bca">BCA</label>       
     </fieldset>
 </div>
-<div>
-    <label for="semester">Choose a semester:</label>
-    <select name="semester" id="semester">
-       <%resolveSuffix=(num)=>num==1?"1st":num==2?"2nd":`${num}th`%>
+<div class="inputContainer">
+    <label for="semester" style="font-size: 1.1rem">Choose a semester:</label>
+    <select name="semester" id="semesterSelect">
+       <%resolveSuffix=(num)=>num==1?"1st":num==2?"2nd":num==3?"3rd":`${num}th`%>
         <%[1,2,3,4,5,6,7,8].forEach((num)=>{%>
             <%if(note.semester==num){%>
                 <option value="<%=num%>" selected><%=resolveSuffix(num)%></option>
@@ -45,8 +45,8 @@
         <%})%>
     </select>
 </div>
-<div>
-    <label for="noteFile">
+<div class="inputContainer">
+    <label for="noteFile" style="font-size: 1.1rem">
         Choose a pdf or an image
     </label>
     <input type="file" name="noteFile" id="noteFile">

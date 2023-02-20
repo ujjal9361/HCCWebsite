@@ -65,7 +65,7 @@ p {
 .fa:hover {
   cursor: pointer;
 }
-.active{
+.active {
   display: block !important;
 }
 /* Navbar starting */
@@ -206,7 +206,7 @@ a {
 .signUpBtn:hover {
   opacity: 0.9;
 }
-.eyeIcons{
+.eyeIcons {
   position: absolute;
   top: 50%;
   right: 12px;
@@ -214,11 +214,12 @@ a {
   cursor: pointer;
   padding: 4px;
 }
-.eyeIcons i{
+.eyeIcons i {
   display: none;
   color: var(--textColor);
 }
-#password, #rePassword{
+#password,
+#rePassword {
   padding-right: 40px;
 }
 /* Main Page Body Ending */
@@ -475,7 +476,8 @@ footer .fa-facebook {
   color: var(--textColor) !important;
 }
 .editBtn,
-.deleteBtn {
+.deleteBtn, .downloadBtn {
+  color: white;
   border-radius: 5px;
   padding: 0.7rem 1rem;
   font-size: 1rem;
@@ -483,7 +485,9 @@ footer .fa-facebook {
 }
 .deleteBtn {
   background: #d64d49;
-  color: white;
+}
+.downloadBtn{
+  background: var(--textColor);
 }
 .editBtn a {
   color: white;
@@ -542,7 +546,9 @@ footer .fa-facebook {
   margin-top: 0.8rem;
 }
 .noticeForm input,
-.noticeForm textarea {
+.noticeForm textarea,
+.inputStyle,
+.textarea {
   width: 100%;
   padding: 0.5rem;
   font-size: 1rem;
@@ -551,13 +557,15 @@ footer .fa-facebook {
   border-radius: 5px;
   overflow: hidden;
 }
-.noticeForm textarea {
+.noticeForm textarea,
+.textarea {
   resize: none;
 }
 .inputContainer {
   margin-top: 1.5rem;
 }
-.eventInputLabel {
+.eventInputLabel,
+.inputLabel {
   color: var(--textColor);
   font-size: 0.9rem;
 }
@@ -682,7 +690,7 @@ footer .fa-facebook {
 .loginInsteadLine {
   display: none;
 }
-.confirmPasswordMsg{
+.confirmPasswordMsg {
   display: none;
   color: red;
   font-size: 0.8rem;
@@ -733,7 +741,8 @@ footer .fa-facebook {
   margin: 0.3rem 0 1rem 0;
   font-size: 1rem;
 }
-.teacherDetails .name {
+.teacherDetails .name,
+.teacherName {
   font-size: 1.4rem;
 }
 .noteBtn {
@@ -741,6 +750,9 @@ footer .fa-facebook {
   font-size: 1.1rem;
   padding: 0.4rem 2.5rem;
   margin-top: 1rem;
+}
+.noteBtn a {
+  color: white;
 }
 .principalSection {
   max-width: 825px;
@@ -779,4 +791,59 @@ footer .fa-facebook {
 }
 .principalDetail .links > * {
   margin: 1rem 0.8rem;
+}
+/* NOTES SECTION */
+.noteSection {
+  min-height: 75vh;
+}
+.note {
+  color: var(--textColor);
+  border-radius: 10px;
+  padding: 2rem;
+  border: 3px solid var(--textColor);
+  margin: 1rem 0;
+}
+.note>*{
+  margin: 0.5rem 0;
+}
+fieldset {
+  padding: 1.5rem;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+legend {
+  font-size: 0.95rem;
+}
+fieldset input[type="checkbox"] {
+  margin-left: 1rem;
+  width: 20px;
+  height: 20px;
+}
+#semesterSelect {
+  font-size: 1.1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+
+}
+#semesterSelect option:nth-of-type(even) {
+  background-color: rgb(235, 235, 235);
+  height: 20px;
+}
+::-webkit-file-upload-button{
+  background: var(--textColor);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+#noteFile{
+  padding: 5px;
+  border: 4px dotted var(--textColor);
+  margin-left: 0.5rem;
+  border-radius: 40px;
+  font-size: 1.1rem;
+}
+.btns{
+  display: flex;
 }
