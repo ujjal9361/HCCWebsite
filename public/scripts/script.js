@@ -2,6 +2,13 @@ let menuIcon = document.querySelector(".menuIcon");
 let navMenu = document.querySelector(".navMenu");
 let navSection = document.querySelector("#navSection");
 let textAreas = document.querySelectorAll("textarea");
+let userProfileDropDown = document.querySelector(".userProfileDropDown");
+let myProfile = document.querySelector(".myProfile");
+function toggleMenu(button, target){
+  button.addEventListener("click",()=>{
+    target.classList.toggle("active");
+  })
+}
 function controlSmallNav() {
   menuIcon.addEventListener("click", () => {
     menuIcon.classList.toggle("rotateLines");
@@ -22,3 +29,4 @@ function askToDeleteEvent(eventForm) {
     eventForm.submit();
 }
 controlSmallNav();
+toggleMenu(myProfile, userProfileDropDown);

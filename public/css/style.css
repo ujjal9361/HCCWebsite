@@ -125,9 +125,80 @@ a {
   height: 3px;
   transition: 0.7s;
 }
-
 .navMenu a:hover::before {
   width: 100%;
+}
+.extraSetting{
+  width: 10%;
+}
+.myProfile{
+  position: relative;
+}
+.myPhoto{
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.3rem !important;
+  color: white;
+  background-color: #0e2442;
+  display: grid !important;
+  place-content: center;
+}
+.myPhoto:hover{
+  background: rgb(80, 80, 80);
+}
+.fa-caret-down{
+  width: 0.9rem;
+  height: 0.9rem;
+  display: grid !important;
+  place-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: black;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  z-index: 99;
+}
+.userProfileDropDown{
+  width: max-content;
+  position: absolute;
+  right: -10px;
+  top: 50px;
+  z-index: 99;
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  min-height: 200px;
+}
+.d-part, .d-profile{
+  display: flex;
+  align-items: center;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+.d-profile{
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #bebebe;
+  cursor: default;
+}
+.d-part:hover{
+  border-radius: 5px;
+  background: #f5f5f5;
+  border-bottom: 2px solid #bebebe;
+}
+.d-icon{
+  margin: 0.4rem 0.6rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  background-color: #f5f5f5;
+}
+.d-icon i{
+  font-size: 1.5rem !important;
 }
 .menuIcon {
   display: none;
@@ -640,7 +711,7 @@ footer .fa-facebook {
   display: grid;
   place-content: center;
 }
-.fa-user {
+.loginContainer .fa-user {
   font-size: 3rem !important;
   color: white;
 }
