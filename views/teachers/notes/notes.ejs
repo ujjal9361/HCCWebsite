@@ -9,10 +9,14 @@
   <%if(req.user==null){%>
   <div>Nope Not allowed</div>
   <%}else{%>
-  <div><%=(proprietaryTeacher.equals(req.user))?"You can add notes":"Nope! Not allowed"%></div>
+  <div><%if(proprietaryTeacher.equals(req.user)){ %>
+    <a href="<%=`/teachers/${proprietaryTeacher._id}/notes/new`%>" class="btn noteBtn" style="padding: 0.7rem 2rem;">Add note</a>
+    <%}else{ %>
+      "Nope! Not allowed"
+    <%}%>
+    </div>
   <%}%>
     <!-- We will show add button to everyone for test puroposes -->
-    <a href="<%=`/teachers/${proprietaryTeacher._id}/notes/new`%>" class="btn noteBtn" style="padding: 0.7rem 2rem;">Add note</a>
 
 
   <%notes.forEach((note)=>{%>
@@ -26,12 +30,12 @@
     <p>Faculty:<%=note.faculty.toString()%></p>
     <p>Semster:<%=resolveSuffix(note.semester)%></p>
     <div class="btns" style="margin-top: 2rem">
-    <a href="<%=note.filePath%>" download class="downloadBtn">Download</a>
-    <a href="<%=`/teachers/${note.publisherId}/notes/${note._id}?_method=PUT`%>" class="editBtn">Edit</a>
-    <form action=<%=`/teachers/${note.publisherId}/notes/${note._id}?_method=DELETE`%> method="post">
-      <button type="submit" class="deleteBtn" style="margin-left: 10px">Delete</button>
-    </form>
-  </div>
+      <a href="<%=note.filePath%>" download class="downloadBtn">Download</a>
+      <a href="<%=`/teachers/${note.publisherId}/notes/${note._id}?_method=PUT`%>" class="editBtn">Edit</a>
+      <form action="<%=`/teachers/${note.publisherId}/notes/${note._id}?_method=DELETE`%>" method="post">
+        <button type="submit" class="deleteBtn" style="margin-left: 10px">Delete</button>
+      </form>
+    </div>
 
   </div>
   <%})%>

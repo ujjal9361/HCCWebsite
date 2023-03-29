@@ -61,7 +61,7 @@ const upload = multer({
 //Which will have Name of theirs,Title of theirs, their phone number,their email,their facebook link and notes button
 router.get("/", async (req, res) => {
   const teachers = await ValidUser.find({ userType: "teacher" });
-  res.render("teachers/teachers", { RenderingURL: req.originalUrl, teachers });
+  res.render("teachers/teachers", { RenderingURL: req.originalUrl, teachers,req:req});
 });
 
 //Getting all notes for a teacher

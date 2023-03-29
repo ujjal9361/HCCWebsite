@@ -28,5 +28,11 @@ function askToDeleteEvent(eventForm) {
   if(result)
     eventForm.submit();
 }
+//if user clicks anywhere except the myprofile menu close the menu
+document.addEventListener("click",e=>{
+  if(myProfile.contains(e.target))
+    return;
+  userProfileDropDown.classList.remove("active");
+});
 controlSmallNav();
 toggleMenu(myProfile, userProfileDropDown);

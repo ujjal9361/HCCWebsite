@@ -3,7 +3,7 @@ const ValidUser = require("../models/validUser");
 const bcrypt = require("bcrypt");
 
 router.get("/", (req, res) => {
-  res.render("homepage", { RenderingURL: req.originalUrl });
+  res.render("homepage", { RenderingURL: req.originalUrl,req:req });
 });
 
 router.get("/signup", (req, res) => {
@@ -82,10 +82,17 @@ router.post("/login", (req, res) => {
     if (err) {
       return console.log(err);
     }
-    if (!validUser) {
+    if (!validUser ) {
       return res.render("auth/login", {
         flashMessage:
           "Email not in database..Contact admin to become a valid user",
+        ...req.body,
+      });
+    }
+    if(!validUser.password){
+      return res.render("auth/login", {
+        flashMessage:
+          "Please sign up and set your password before logging in",
         ...req.body,
       });
     }

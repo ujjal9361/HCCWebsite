@@ -1,4 +1,4 @@
-<%-include('./components/header.ejs')%>
+<%-include('./components/header.ejs',{req:req})%>
 
 <section id="home">
   <div class="landingArea">
@@ -9,10 +9,12 @@
         ipsa numquam quaerat officia, ducimus veritatis atque ut est modi
         repellat impedit consequatur
       </p>
-      <div class="signInUpBtnContainer" style="margin-top: 50px;">
-        <a class="btn signUpBtn" href="/signup">SignUp</a>
-        <a class="btn loginBtn" style="background: transparent;" href="/login">LogIn</a>
-      </div>
+      <%if(req.user==undefined){%>
+        <div class="signInUpBtnContainer" style="margin-top: 50px;">
+          <a class="btn signUpBtn" href="/signup">SignUp</a>
+          <a class="btn loginBtn" style="background: transparent;" href="/login">LogIn</a>
+        </div>
+      <%}%>
     </div>
   </div>
 </section>
